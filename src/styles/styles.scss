@@ -1,0 +1,32 @@
+@import './fonts.scss';
+@import './colors.scss';
+@import './mixins.scss';
+
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-family: 'GoogleSans-Regular', sans-serif !important;
+  font-size: 15px !important;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+}
+
+.dx-editor-underlined .dx-texteditor-input {
+  font-family: 'GoogleSans-Regular', sans-serif;
+  font-size: 15px;
+  color: $tms-color-white !important;
+}
+
+.dx-placeholder {
+  font-family: 'GoogleSans-Regular', sans-serif;
+  font-size: 15px;
+}

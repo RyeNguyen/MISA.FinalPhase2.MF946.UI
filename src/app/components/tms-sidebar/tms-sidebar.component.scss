@@ -1,0 +1,55 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/mixins' as *;
+
+.tms-sidebar {
+  width: 260px;
+  height: 100vh;
+  color: $tms-color-white;
+  background-color: $tms-color-sidebar;
+  padding-top: 20px;
+
+  &__header {
+    margin: 0 0 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-button {
+      @include background-template;
+      @include icon-size-default;
+      background-image: url('../../../assets/icons/tms-icon-button-header.svg');
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-icon {
+      @include background-template;
+      @include icon-size-large;
+      background-image: url('../../../assets/icons/tms-icon-logo.svg');
+    }
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px 8px 24px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $tms-color-sidebar-hover;
+    }
+
+    &-icon {
+      @include background-template;
+      @include icon-size-default;
+    }
+  }
+}

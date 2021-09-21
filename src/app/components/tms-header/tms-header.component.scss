@@ -1,0 +1,98 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/colors' as *;
+
+.tms-header {
+  background-color: transparent;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+
+  &--right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__button {
+    height: 32px;
+    padding: 0 16px;
+    background-color: $tms-color-white-medium;
+    color: $tms-color-white;
+    font-size: 13px;
+    border-radius: 24px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    &--add {
+      padding: 0 12px 0 8px;
+      border-radius: 24px 0 0 24px;
+    }
+
+    &--dropdown {
+      padding: 0 8px;
+      border-radius: 0 24px 24px 0;
+    }
+
+    &-separator {
+      background-color: $tms-color-white;
+      width: 1px;
+      height: 24px;
+      position: absolute;
+      right: 32px;
+    }
+
+    &-icon {
+      @include background-template;
+      margin-right: 4px;
+
+      &.edit {
+        @include icon-size-small;
+        background-image: url('../../../assets/icons/tms-icon-header-edit.svg');
+      }
+
+      &.add {
+        @include icon-size-default;
+        background-image: url('../../../assets/icons/tms-icon-header-add.svg');
+      }
+
+      &.dropdown {
+        @include icon-size-small;
+        margin-right: 0;
+        background-image: url('../../../assets/icons/tms-icon-arrow-down.svg');
+      }
+    }
+  }
+
+  &__item {
+    @include icon-size-default;
+
+    div {
+      @include icon-size-default;
+      cursor: pointer;
+    }
+  }
+
+  &__user {
+    width: 32px;
+    height: 32px;
+    background-color: $tms-color-user;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $tms-color-white;
+    font-weight: 500;
+  }
+}

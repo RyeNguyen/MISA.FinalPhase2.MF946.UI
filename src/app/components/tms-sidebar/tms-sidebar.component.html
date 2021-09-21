@@ -1,0 +1,26 @@
+<div class="tms-sidebar">
+  <div class="tms-sidebar__header">
+    <div class="tms-sidebar__header-button"></div>
+    <div class="tms-sidebar__logo">
+      <div class="tms-sidebar__logo-icon"></div>
+      <h1 class="tms-sidebar__logo-title">Công việc</h1>
+    </div>
+  </div>
+
+  <div class="tms-sidebar__body">
+    <div
+      class="tms-sidebar__item"
+      *ngFor="let item of sidebarItems"
+    >
+      <div
+        class="tms-sidebar__item-icon"
+        [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
+      ></div>
+      <div class="tms-sidebar__item-text">
+        {{ item.itemText }}
+      </div>
+    </div>
+
+    <app-tms-sidebar-textbox></app-tms-sidebar-textbox>
+  </div>
+</div>

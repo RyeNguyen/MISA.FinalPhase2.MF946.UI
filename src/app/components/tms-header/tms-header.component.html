@@ -1,0 +1,51 @@
+<div class="tms-header">
+  <div class="tms-header--left">
+    <div class="tms-header__button">
+      <div class="tms-header__button-icon edit"></div>
+      {{ headerVariables.SettingButtonText }}
+    </div>
+  </div>
+
+  <div class="tms-header--right">
+    <div class="tms-header__button-group">
+      <div class="tms-header__button tms-header__button--add">
+        <div class="tms-header__button-icon add"></div>
+        {{ headerVariables.AddButtonText }}
+      </div>
+      <div class="tms-header__button-separator"></div>
+      <div
+        id="tms-header__dropdown-button"
+        class="tms-header__button tms-header__button--dropdown"
+        (click)="toggleDropdown()"
+      >
+        <div class="tms-header__button-icon dropdown"></div>
+      </div>
+    </div>
+
+    <dx-popover
+      target="#tms-header__dropdown-button"
+      position="bottom"
+      [width]="234"
+      [visible]="dropdownVisible"
+      (onHidden)="dropdownVisible = false"
+    >
+      <div *dxTemplate="let data = model of 'content'">
+        <dx-list
+          [dataSource]="['tôi', 'là', 'Minh']"
+        >
+        </dx-list>
+      </div>
+    </dx-popover>
+
+    <div
+      *ngFor="let item of headerItems"
+      class="tms-header__item"
+    >
+      <div
+        [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
+      ></div>
+    </div>
+
+    <div class="tms-header__user">{{ headerVariables.UserText }}</div>
+  </div>
+</div>

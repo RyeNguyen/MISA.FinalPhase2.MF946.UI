@@ -1,0 +1,28 @@
+@use '../../../../styles/colors' as *;
+@use '../../../../styles/mixins' as *;
+
+.tms-sidebar-text-box {
+  margin-top: 16px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .dx-texteditor.dx-editor-underlined {
+    border-bottom: 1px solid $tms-color-white-light;
+  }
+
+  .dx-texteditor.dx-state-focused.dx-editor-underlined {
+    border-color: $tms-color-white-light;
+  }
+
+  .dx-texteditor.dx-state-hover {
+    border-color: $tms-color-blue;
+  }
+}
+
+.tms-sidebar-setting {
+  @include icon-size-default;
+  background-image: url('../../../../assets/icons/tms-icon-sidebar-setting.svg');
+  cursor: pointer;
+}

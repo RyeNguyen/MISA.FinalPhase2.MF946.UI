@@ -1,0 +1,20 @@
+@mixin background-template {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin icon-size-default {
+  width: 24px;
+  height: 24px;
+}
+
+@mixin icon-size-large {
+  width: 32px;
+  height: 32px;
+}
+
+@mixin icon-size-small {
+  width: 16px;
+  height: 16px;
+}
