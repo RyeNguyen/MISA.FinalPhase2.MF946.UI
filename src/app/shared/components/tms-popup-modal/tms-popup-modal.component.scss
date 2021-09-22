@@ -1,0 +1,7 @@
+@use '../../../../styles/colors' as *;
+
+.tms-modal {
+  font-family: 'GoogleSans-Regular', sans-serif;
+  font-size: 15px;
+  color: $tms-color-text !important;
+}

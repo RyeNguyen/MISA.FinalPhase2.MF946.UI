@@ -12,12 +12,24 @@
 body {
   font-family: 'GoogleSans-Regular', sans-serif !important;
   font-size: 15px !important;
+  color: $tms-color-text;
 }
 
 h1 {
   margin: 0;
   font-size: 24px !important;
   font-weight: 500 !important;
+}
+
+.tms-asterisk {
+  color: $tms-color-red;
+}
+
+.dx-theme-generic-typography,
+.dx-overlay-wrapper {
+  font-family: 'GoogleSans-Regular', sans-serif;
+  font-size: 15px;
+  color: $tms-color-text !important;
 }
 
 .dx-editor-underlined .dx-texteditor-input {
@@ -29,4 +41,39 @@ h1 {
 .dx-placeholder {
   font-family: 'GoogleSans-Regular', sans-serif;
   font-size: 15px;
+}
+
+.dx-texteditor {
+  &.dx-editor-outlined {
+    border-radius: 8px;
+    border: 1px solid $tms-color-grey;
+  }
+
+  &.dx-state-hover {
+    @include input-box-shadow;
+    border-color: $tms-color-blue;
+  }
+
+  &.dx-state-focused {
+    &.dx-editor-outlined {
+      @include input-box-shadow;
+      border-color: $tms-color-blue;
+    }
+  }
+}
+
+.dx-overlay-wrapper input, .dx-overlay-wrapper textarea {
+  font-family: 'GoogleSans-Regular', sans-serif;
+  font-size: 15px;
+}
+
+.dx-texteditor-input {
+  padding: 0 16px;
+}
+
+.tms-modal {
+  .dx-placeholder {
+    left: 7px;
+    color: #B9B9B9;
+  }
 }
