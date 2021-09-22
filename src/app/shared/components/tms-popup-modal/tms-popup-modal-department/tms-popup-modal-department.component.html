@@ -1,37 +1,14 @@
 <div class="tms-modal--department">
   <app-tms-text-field
-    inputLabel="Tên dự án/nhóm"
-    inputPlaceholder="Tên dự án/nhóm"
+    [inputLabel]="modalDepartmentVariables.ModalFieldNameLabel"
+    [inputPlaceholder]="modalDepartmentVariables.ModalFieldNamePlaceholder"
     [isRequired]="true"
   ></app-tms-text-field>
 
-  <div class="tms-text-field__group">
-    <app-tms-text-field
-      inputLabel="Chọn phòng ban"
-      inputPlaceholder="Chọn phòng ban"
-      [ngStyle]="{width: '50%'}"
-      [isRequired]="true"
-    ></app-tms-text-field>
-
-    <app-tms-text-field
-      inputLabel="Từ ngày"
-      [ngStyle]="{width: '25%'}"
-    ></app-tms-text-field>
-
-    <app-tms-text-field
-      inputLabel="Đến ngày"
-      [ngStyle]="{width: '25%'}"
-    ></app-tms-text-field>
-  </div>
-
   <app-tms-text-field
-    inputLabel="Mô tả"
-    inputPlaceholder="Mô tả"
-    textFieldHeight="78px"
+    [inputLabel]="modalDepartmentVariables.ModalFieldMemberLabel"
+    [inputPlaceholder]="modalDepartmentVariables.ModalFieldMemberPlaceholder"
   ></app-tms-text-field>
 
-  <app-tms-text-field
-    inputLabel="Thành viên"
-    inputPlaceholder="Tìm theo tên hoặc email để thêm nhanh"
-  ></app-tms-text-field>
+  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
 </div>

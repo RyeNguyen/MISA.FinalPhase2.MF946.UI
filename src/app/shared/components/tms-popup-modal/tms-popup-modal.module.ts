@@ -1,33 +1,36 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import {
   DxPopupModule,
-  DxTextBoxModule,
-  DxTemplateModule
+  DxTemplateModule,
 } from 'devextreme-angular';
 
-import {TmsPopupModalComponent} from "./tms-popup-modal.component";
-import {TmsPopupModalDepartmentComponent} from './tms-popup-modal-department/tms-popup-modal-department.component';
-import {TmsTextFieldComponent} from "../tms-text-field/tms-text-field.component";
+import { TmsPopupModalComponent } from './tms-popup-modal.component';
+import { TmsPopupModalDepartmentComponent } from './tms-popup-modal-department/tms-popup-modal-department.component';
+import { TmsTextFieldModule } from '../tms-text-field/tms-text-field.module';
+import { TmsTextAreaModule } from '../tms-text-area/tms-text-area.module';
+import { TmsButtonModule } from '../tms-button/tms-button.module';
+import { TmsPopupModalFooterComponent } from './tms-popup-modal-footer/tms-popup-modal-footer.component';
+import { TmsPopupModalProjectComponent } from './tms-popup-modal-project/tms-popup-modal-project.component';
 
 @NgModule({
   declarations: [
     TmsPopupModalComponent,
     TmsPopupModalDepartmentComponent,
-    TmsTextFieldComponent
+    TmsPopupModalFooterComponent,
+    TmsPopupModalProjectComponent,
   ],
   exports: [
     TmsPopupModalComponent,
-    TmsTextFieldComponent
   ],
   imports: [
     BrowserModule,
     DxPopupModule,
-    DxTextBoxModule,
-    DxTemplateModule
-  ]
+    DxTemplateModule,
+    TmsTextFieldModule,
+    TmsTextAreaModule,
+    TmsButtonModule
+  ],
 })
-
-export class TmsPopupModalModule {
-}
+export class TmsPopupModalModule {}

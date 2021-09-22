@@ -4,7 +4,7 @@ import {TmsDashboardComponent} from '../tms-dashboard/tms-dashboard.component';
 import {TmsProjectComponent} from "../tms-project/tms-project.component";
 
 const routes: Routes = [
-  {path: 'tasks', component: TmsProjectComponent},
+  {path: 'project', component: TmsProjectComponent},
   // { path: 'detail/:id', component: HeroDetailComponent },
   {path: 'dashboard', component: TmsDashboardComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},

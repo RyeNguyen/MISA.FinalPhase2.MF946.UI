@@ -12,11 +12,7 @@ import {HEADER_CONSTANTS} from "../../shared/constants/header";
 export class TmsHeaderComponent implements OnInit {
   headerItems: iconItem[] = [];
   dropdownVisible: boolean = false;
-  headerVariables = {
-    SettingButtonText: '',
-    AddButtonText: '',
-    UserText: ''
-  };
+  headerVariables;
 
   constructor() {
     this.headerItems = HeaderItems;

@@ -1,8 +1,10 @@
-@import './fonts.scss';
-@import './colors.scss';
-@import './mixins.scss';
+@import "./fonts.scss";
+@import "./colors.scss";
+@import "./mixins.scss";
 
-*, html, body {
+*,
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +12,7 @@
 }
 
 body {
-  font-family: 'GoogleSans-Regular', sans-serif !important;
+  font-family: "GoogleSans-Regular", sans-serif !important;
   font-size: 15px !important;
   color: $tms-color-text;
 }
@@ -27,19 +29,19 @@ h1 {
 
 .dx-theme-generic-typography,
 .dx-overlay-wrapper {
-  font-family: 'GoogleSans-Regular', sans-serif;
+  font-family: "GoogleSans-Regular", sans-serif;
   font-size: 15px;
   color: $tms-color-text !important;
 }
 
 .dx-editor-underlined .dx-texteditor-input {
-  font-family: 'GoogleSans-Regular', sans-serif;
+  font-family: "GoogleSans-Regular", sans-serif;
   font-size: 15px;
   color: $tms-color-white !important;
 }
 
 .dx-placeholder {
-  font-family: 'GoogleSans-Regular', sans-serif;
+  font-family: "GoogleSans-Regular", sans-serif;
   font-size: 15px;
 }
 
@@ -62,18 +64,60 @@ h1 {
   }
 }
 
-.dx-overlay-wrapper input, .dx-overlay-wrapper textarea {
-  font-family: 'GoogleSans-Regular', sans-serif;
+.dx-overlay-wrapper input,
+.dx-overlay-wrapper textarea {
+  font-family: "GoogleSans-Regular", sans-serif;
   font-size: 15px;
 }
 
 .dx-texteditor-input {
-  padding: 0 16px;
+  padding: 7px 16px 8px;
 }
 
 .tms-modal {
   .dx-placeholder {
     left: 7px;
-    color: #B9B9B9;
+    color: #b9b9b9;
+  }
+}
+
+.dx-popup {
+  &-title {
+    border-bottom: none;
+
+    &.dx-toolbar {
+      padding: 16px 24px !important;
+    }
+  }
+
+  &-content {
+    padding: 8px 0;
+  }
+}
+
+.dx-toolbar-label > div {
+  font-size: 24px !important;
+  font-family: "GoogleSans-Bold", sans-serif;
+  overflow: visible;
+}
+
+.dx-toolbar-label .dx-toolbar-item-content > div {
+  overflow: visible;
+}
+
+.dx-button-has-text .dx-button-content {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.dx-button-mode-contained {
+  background-color: $tms-color-blue;
+  color: $tms-color-white;
+  border-color: transparent;
+  border-radius: 8px;
+
+  &.dx-state-hover {
+    background-color: $tms-color-primary-hover;
+    border-color: $tms-color-primary-hightlight;
   }
 }
