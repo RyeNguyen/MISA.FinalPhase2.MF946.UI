@@ -9,7 +9,6 @@ export class TmsTextFieldComponent implements OnInit {
   @Input() inputLabel: string = '';
   @Input() inputPlaceholder: string = '';
   @Input() isRequired: boolean = false;
-  @Input() textFieldWidth: string = '100%';
   @Input() textFieldHeight: string = '40px';
 
   constructor() { }
