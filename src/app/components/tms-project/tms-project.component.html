@@ -1,1 +1,12 @@
-<p>tms-project works!</p>
+<div class="tms-project">
+  <app-tms-header
+    [headerItems]="headerItems"
+  ></app-tms-header>
+
+  <div class="tms-project--main">
+    <app-tms-grid
+      [gridData]="tasksData"
+      [taskColumns]="taskColumns"
+    ></app-tms-grid>
+  </div>
+</div>

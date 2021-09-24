@@ -13,6 +13,7 @@ import { TmsTextAreaModule } from '../tms-text-area/tms-text-area.module';
 import { TmsButtonModule } from '../tms-button/tms-button.module';
 import { TmsPopupModalFooterComponent } from './tms-popup-modal-footer/tms-popup-modal-footer.component';
 import { TmsPopupModalProjectComponent } from './tms-popup-modal-project/tms-popup-modal-project.component';
+import { TmsPopupModalTaskComponent } from './tms-popup-modal-task/tms-popup-modal-task.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TmsPopupModalProjectComponent } from './tms-popup-modal-project/tms-pop
     TmsPopupModalDepartmentComponent,
     TmsPopupModalFooterComponent,
     TmsPopupModalProjectComponent,
+    TmsPopupModalTaskComponent,
   ],
   exports: [
     TmsPopupModalComponent,

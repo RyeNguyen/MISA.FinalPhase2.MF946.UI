@@ -29,19 +29,19 @@ h1 {
 
 .dx-theme-generic-typography,
 .dx-overlay-wrapper {
-  font-family: "GoogleSans-Regular", sans-serif;
+  font-family: "GoogleSans-Light", sans-serif;
   font-size: 15px;
   color: $tms-color-text !important;
 }
 
 .dx-editor-underlined .dx-texteditor-input {
-  font-family: "GoogleSans-Regular", sans-serif;
+  font-family: "GoogleSans-Light", sans-serif;
   font-size: 15px;
   color: $tms-color-white !important;
 }
 
 .dx-placeholder {
-  font-family: "GoogleSans-Regular", sans-serif;
+  font-family: "GoogleSans-Light", sans-serif;
   font-size: 15px;
 }
 
@@ -66,7 +66,7 @@ h1 {
 
 .dx-overlay-wrapper input,
 .dx-overlay-wrapper textarea {
-  font-family: "GoogleSans-Regular", sans-serif;
+  font-family: "GoogleSans-Light", sans-serif;
   font-size: 15px;
 }
 
@@ -116,8 +116,70 @@ h1 {
   border-color: transparent;
   border-radius: 8px;
 
-  &.dx-state-hover {
+  &.dx-state-hover,
+  &.dx-state-focused,
+  &.dx-state-active {
     background-color: $tms-color-primary-hover;
     border-color: $tms-color-primary-hightlight;
   }
+}
+
+.dx-list .dx-empty-message, .dx-list-item-content {
+  height: 40px;
+  padding: 0 12px;
+}
+
+.dx-list .dx-empty-message, .dx-list-item {
+  border-top: none;
+  font-family: "GoogleSans-Light", sans-serif;
+  font-size: 14px;
+  color: $tms-color-text;
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item {
+  &.dx-state-hover,
+  &.dx-state-focused,
+  &.dx-state-active {
+    background-color: $tms-color-blue-light;
+    color: $tms-color-text;
+  }
+}
+
+.dx-datagrid {
+  border-radius: 0 0 8px 8px;
+  color: $tms-color-text;
+  font-family: "GoogleSans-Light", sans-serif;
+  font-size: 15px;
+}
+
+.dx-datagrid-headers {
+  font-size: 16px;
+  color: $tms-color-text;
+  font-family: "GoogleSans-Bold", sans-serif;
+  background-color: $tms-color-grid-bg;
+}
+
+.dx-datagrid-content .dx-datagrid-table.dx-datagrid-table-fixed {
+  height: 42px;
+}
+
+.dx-datagrid-content .dx-datagrid-table .dx-row > td,
+.dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+  height: 44px;
+  padding: 11px 16px;
+  box-sizing: border-box;
+}
+
+.dx-datagrid-headers .dx-datagrid-table .dx-row > td,
+.dx-datagrid .dx-row-lines > td {
+  border-bottom: 0.5px solid $tms-color-grey;
+}
+
+.dx-datagrid .dx-column-lines > td {
+  border-right: 0.5px solid $tms-color-grey;
+}
+
+.dx-row.dx-data-row.dx-row-lines.dx-column-lines.dx-state-hover {
+  @include table-row-shadow;
+  background-color: $tms-color-blue-light;
 }

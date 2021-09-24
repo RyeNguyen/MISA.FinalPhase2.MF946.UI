@@ -1,0 +1,28 @@
+@use '../../../styles/colors' as *;
+
+::ng-deep .tms-project {
+  &--main {
+    width: 100%;
+    height: calc(100vh - 56px);
+    padding: 16px 0 16px 16px;
+  }
+
+  .tms-header {
+    background-color: $tms-color-white;
+
+    &--left {
+      &.dashboard {
+        display: none;
+      }
+
+      &.project {
+        display: flex;
+      }
+    }
+
+    &__button {
+      background-color: $tms-color-blue;
+      color: $tms-color-white;
+    }
+  }
+}

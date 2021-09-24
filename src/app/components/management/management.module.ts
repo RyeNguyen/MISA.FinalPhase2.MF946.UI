@@ -2,17 +2,15 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {ManagementComponent} from './management.component';
-import {TmsProjectComponent} from '../tms-project/tms-project.component';
 
-import {TmsHeaderModule} from "../tms-header/tms-header.module";
+import {TmsProjectModule} from '../tms-project/tms-project.module';
 import {TmsDashboardModule} from '../tms-dashboard/tms-dashboard.module';
 import {TmsPopupModalModule} from "../../shared/components/tms-popup-modal/tms-popup-modal.module";
 import {ManagementRoutingModule} from './management-routing.module';
 
 @NgModule({
   declarations: [
-    ManagementComponent,
-    TmsProjectComponent
+    ManagementComponent
   ],
   exports: [
     ManagementComponent
@@ -20,7 +18,7 @@ import {ManagementRoutingModule} from './management-routing.module';
   imports: [
     BrowserModule,
     ManagementRoutingModule,
-    TmsHeaderModule,
+    TmsProjectModule,
     TmsDashboardModule,
     TmsPopupModalModule
   ]

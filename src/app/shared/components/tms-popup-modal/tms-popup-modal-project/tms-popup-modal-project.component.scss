@@ -1,4 +1,4 @@
-.tms-modal--project {
+.tms-modal__project {
   padding: 0 24px;
 }
 
@@ -6,6 +6,5 @@
   &__group {
     display: flex;
     gap: 0.5rem;
-    //justify-content: space-between;
   }
 }

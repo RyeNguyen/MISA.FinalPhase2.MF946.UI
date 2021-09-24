@@ -1,0 +1,10 @@
+@use '../../../../../styles/colors' as *;
+
+.tms-grid__sidebar {
+  position: absolute;
+  right: 0;
+  top: -16px;
+  background-color: $tms-color-sidebar;
+  width: 64px;
+  height: 100vh;
+}

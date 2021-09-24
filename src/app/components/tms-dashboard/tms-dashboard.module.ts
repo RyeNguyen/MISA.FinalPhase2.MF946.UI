@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {TmsDashboardComponent} from "./tms-dashboard.component";
 import {TmsSidebarModule} from '../tms-sidebar/tms-sidebar.module';
+import {TmsHeaderModule} from "../tms-header/tms-header.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {TmsSidebarModule} from '../tms-sidebar/tms-sidebar.module';
   ],
   imports: [
     BrowserModule,
-    TmsSidebarModule
+    TmsSidebarModule,
+    TmsHeaderModule
   ]
 })
 

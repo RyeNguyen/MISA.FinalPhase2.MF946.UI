@@ -1,0 +1,39 @@
+<div class="tms-grid">
+  <div class="tms-grid__widget"></div>
+
+  <dx-data-grid
+    [dataSource]="gridData"
+    width="calc(100% - 80px)"
+    height="calc(100% - 48px)"
+    keyExpr="TaskID"
+    [allowColumnResizing]="true"
+    [showBorders]="false"
+    [showRowLines]="true"
+    [hoverStateEnabled]="true"
+    columnResizingMode="nextColumn"
+  >
+    <dxi-column
+      caption=""
+      width="48"
+      cellTemplate="cellTemplate"
+      headerCellTemplate="headerTemplate"
+    ></dxi-column>
+
+    <dxi-column
+      *ngFor="let column of taskColumns; trackBy:getColumnId"
+      [caption]="column['ColName']"
+      [dataField]="column['ColField']"
+      [width]="column['ColWidth']"
+    ></dxi-column>
+
+    <div *dxTemplate="let data of 'headerTemplate'">
+
+    </div>
+
+    <div *dxTemplate="let data of 'cellTemplate', let indexElement = index">
+      {{ indexElement }}
+    </div>
+  </dx-data-grid>
+
+  <app-tms-grid-sidebar></app-tms-grid-sidebar>
+</div>

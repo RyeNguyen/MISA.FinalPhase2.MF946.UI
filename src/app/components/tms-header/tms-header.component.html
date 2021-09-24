@@ -1,16 +1,35 @@
 <div class="tms-header">
-  <div class="tms-header--left">
+  <div class="tms-header--left dashboard">
     <div class="tms-header__button">
       <div class="tms-header__button-icon edit"></div>
-      {{ headerVariables.SettingButtonText }}
+      {{ headerVariables['SettingButtonText'] }}
+    </div>
+  </div>
+
+  <div class="tms-header--left project">
+    <div class="tms-header__button-icon apps"></div>
+    <div class="tms-header__button-icon home-container">
+      <div class="tms-header__button-icon home"></div>
+    </div>
+    <div>MISA AMIS TMS</div>
+    <div class="tms-header__button-icon setting-container">
+      <div class="tms-header__button-icon setting"></div>
+    </div>
+    <div class="tms-header__links">
+      <div class="tms-header__link" *ngFor="let link of headerLinks">
+        {{ link['Name'] }}
+      </div>
     </div>
   </div>
 
   <div class="tms-header--right">
     <div class="tms-header__button-group">
-      <div class="tms-header__button tms-header__button--add">
+      <div
+        class="tms-header__button tms-header__button--add"
+        (click)="showPopupToAdd()"
+      >
         <div class="tms-header__button-icon add"></div>
-        {{ headerVariables.AddButtonText }}
+        {{ headerVariables['AddButtonText'] }}
       </div>
       <div class="tms-header__button-separator"></div>
       <div
@@ -22,6 +41,7 @@
       </div>
     </div>
 
+    <!-- Popup chức năng -->
     <dx-popover
       target="#tms-header__dropdown-button"
       position="bottom"
@@ -30,23 +50,36 @@
       [visible]="dropdownVisible"
       (onHidden)="dropdownVisible = false"
     >
+      <!-- component DxList bên trong component DxPopover -->
       <div *dxTemplate="let data = model of 'content'">
-        <dx-list
-          [dataSource]="['tôi', 'là', 'Minh']"
-        >
+        <dx-list [dataSource]="headerFunctions">
+          <div *dxTemplate="let item of 'item'">
+            <div
+              class="tms-header__dropdown-item"
+              (click)="clickFunction(item['itemId'])"
+            >
+              <div
+                class="tms-header__dropdown-icon"
+                [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
+              ></div>
+              <div>{{item['itemText']}}</div>
+            </div>
+          </div>
         </dx-list>
       </div>
     </dx-popover>
 
-    <div
-      *ngFor="let item of headerItems"
-      class="tms-header__item"
-    >
+    <div class="tms-header__widget">
       <div
-        [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
-      ></div>
-    </div>
+        *ngFor="let item of headerItems"
+        class="tms-header__item"
+      >
+        <div
+          [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
+        ></div>
+      </div>
 
-    <div class="tms-header__user">{{ headerVariables.UserText }}</div>
+      <div class="tms-header__user">{{ headerVariables.UserText }}</div>
+    </div>
   </div>
 </div>

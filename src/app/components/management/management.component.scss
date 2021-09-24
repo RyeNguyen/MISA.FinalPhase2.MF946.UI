@@ -7,12 +7,4 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
-
-  &--main {
-    position: absolute;
-    left: 260px;
-    top: 0;
-    width: calc(100% - 260px);
-    height: 100vh;
-  }
 }

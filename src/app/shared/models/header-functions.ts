@@ -3,22 +3,12 @@ import {iconItem} from "../interfaces/icon-item";
 export const HeaderFunctions: iconItem[] = [
   {
     itemId: 1,
-    itemIcon: 'tms-icon-header-search',
-    itemText: 'Tìm kiếm'
+    itemIcon: 'tms-icon-add-project',
+    itemText: 'Thêm dự án/nhóm'
   },
   {
-    itemId: 2,
-    itemIcon: 'tms-icon-header-notification',
-    itemText: 'Thông báo'
-  },
-  {
-    itemId: 3,
-    itemIcon: 'tms-icon-header-help',
-    itemText: 'Trợ giúp'
-  },
-  {
-    itemId: 4,
-    itemIcon: 'tms-icon-header-more',
-    itemText: 'Cài đặt'
+    itemId: 0,
+    itemIcon: 'tms-icon-add-department',
+    itemText: 'Thêm phòng ban'
   }
 ]
