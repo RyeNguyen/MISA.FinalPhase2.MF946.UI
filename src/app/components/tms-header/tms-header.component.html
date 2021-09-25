@@ -1,4 +1,5 @@
 <div class="tms-header">
+  <!-- Phần này chỉ xuất hiện khi ở page dashboard -->
   <div class="tms-header--left dashboard">
     <div class="tms-header__button">
       <div class="tms-header__button-icon edit"></div>
@@ -6,6 +7,7 @@
     </div>
   </div>
 
+  <!-- Phần này chỉ xuất hiện khi ở page project -->
   <div class="tms-header--left project">
     <div class="tms-header__button-icon apps"></div>
     <div class="tms-header__button-icon home-container">
@@ -22,6 +24,7 @@
     </div>
   </div>
 
+  <!-- Phần xuất hiện chung ở các page -->
   <div class="tms-header--right">
     <div class="tms-header__button-group">
       <div
@@ -79,7 +82,7 @@
         ></div>
       </div>
 
-      <div class="tms-header__user">{{ headerVariables.UserText }}</div>
+      <div class="tms-header__user">{{ headerVariables['UserText'] }}</div>
     </div>
   </div>
 </div>

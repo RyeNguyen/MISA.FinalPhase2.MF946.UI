@@ -17,7 +17,7 @@ export const TaskColumns: TaskColumn[] = [
     ColID: 1,
     ColField: 'TaskName',
     ColName: 'Tên công việc',
-    ColWidth: 800
+    ColWidth: 400
   },
   {
     ColID: 2,
@@ -42,5 +42,5 @@ export const TaskColumns: TaskColumn[] = [
     ColField: 'AssigneeName',
     ColName: 'Người thực hiện',
     ColWidth: 200
-  },
+  }
 ];
