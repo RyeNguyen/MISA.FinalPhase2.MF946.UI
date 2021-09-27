@@ -1,0 +1,18 @@
+<div
+  class="tms-date-box"
+>
+  <div
+    class="tms-date-box__label"
+  >
+    {{ dateBoxLabel }}
+  </div>
+
+  <dx-date-box
+    [placeholder]="inputPlaceholder"
+    width="100%"
+    [height]="inputHeight"
+    pickerType="calendar"
+    type="date"
+    displayFormat="dd/MM/yyyy"
+  ></dx-date-box>
+</div>

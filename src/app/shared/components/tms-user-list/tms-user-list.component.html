@@ -1,0 +1,25 @@
+<div class="tms-user-list">
+  <dx-scroll-view
+    [scrollByContent]="true"
+    [scrollByThumb]="true"
+    showScrollbar="always"
+  >
+    <div class="tms-user-list__items">
+      <div *ngFor="let user of userList" class="tms-user-list__item">
+        <div class="tms-user-info">
+          <div
+            class="tms-user-info__avatar"
+            [ngStyle]="{backgroundColor: user['AvatarColor']}"
+          >NM</div>
+          <div class="tms-user-info__text">
+            <div><strong>{{ user['FullName'] }}</strong></div>
+            <div>{{ user['JobPositionName'] }}</div>
+            <div>{{ user['Email'] }}</div>
+          </div>
+        </div>
+        <div class="tms-user-access">
+        </div>
+      </div>
+    </div>
+  </dx-scroll-view>
+</div>

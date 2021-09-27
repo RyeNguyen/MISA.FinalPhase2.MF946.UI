@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { DxButtonModule } from 'devextreme-angular';
 
-import { TmsButtonComponent } from '../tms-button/tms-button.component';
+import { TmsButtonComponent } from './tms-button.component';
 
 @NgModule({
   declarations: [TmsButtonComponent],

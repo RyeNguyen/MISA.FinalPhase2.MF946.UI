@@ -1,0 +1,27 @@
+<div class="tms-modal__department">
+  <app-tms-text-field
+    [inputLabel]="modalDepartmentVariables['ModalFieldNameLabel']"
+    [inputPlaceholder]="modalDepartmentVariables['ModalFieldNamePlaceholder']"
+    [isRequired]="true"
+  ></app-tms-text-field>
+
+  <app-tms-text-field
+    [inputLabel]="modalDepartmentVariables['ModalFieldMemberLabel']"
+    [inputPlaceholder]="modalDepartmentVariables['ModalFieldMemberPlaceholder']"
+    bonusClass="tms-text-field__with-list"
+    [bonusButton]="selectMemberButton"
+  ></app-tms-text-field>
+
+  <app-tms-user-list></app-tms-user-list>
+
+  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+</div>
+
+<app-tms-popup-modal
+  [popupVisible]="innerVisible"
+  (onPopupHidden)="innerVisible = false"
+  [modalTitle]="popupTitle"
+  [modalWidth]="popupWidth"
+>
+  <app-tms-popup-modal-member></app-tms-popup-modal-member>
+</app-tms-popup-modal>

@@ -2,6 +2,13 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {TmsHeaderComponent} from "./tms-header.component";
+
+import {ManagementRoutingModule} from "../management/management-routing.module";
+import {TmsPopupModalModule} from "../../shared/components/tms-popup-modal/tms-popup-modal.module";
+import {TmsPopupModalDepartmentModule} from "../tms-popup-modal-department/tms-popup-modal-department.module";
+import {TmsPopupModalProjectModule} from "../tms-popup-modal-project/tms-popup-modal-project.module";
+import {TmsPopupModalTaskModule} from "../tms-popup-modal-task/tms-popup-modal-task.module";
+
 import {
   DxPopoverModule,
   DxTemplateModule,
@@ -19,7 +26,12 @@ import {
     BrowserModule,
     DxPopoverModule,
     DxTemplateModule,
-    DxListModule
+    DxListModule,
+    ManagementRoutingModule,
+    TmsPopupModalModule,
+    TmsPopupModalDepartmentModule,
+    TmsPopupModalProjectModule,
+    TmsPopupModalTaskModule
   ]
 })
 

@@ -1,0 +1,19 @@
+<div
+  class="tms-select-box"
+>
+  <div
+    class="tms-select-box__label"
+  >
+    {{ selectBoxLabel }}
+  </div>
+
+  <dx-select-box
+    [placeholder]="inputPlaceholder"
+    width="100%"
+    [height]="inputHeight"
+    [searchEnabled]="true"
+    [dataSource]="selectBoxData"
+    displayExpr="itemName"
+    valueExpr="itemId"
+  ></dx-select-box>
+</div>

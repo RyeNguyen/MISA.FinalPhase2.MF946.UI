@@ -2,25 +2,17 @@
   class="tms-modal"
   [width]="modalWidth"
   height="auto"
-  [title]="currentTemplateTitle"
+  [title]="modalTitle"
   [showTitle]="true"
   [shadingColor]="'rgba(0, 0, 0, 0.45)'"
   [dragEnabled]="true"
   [closeOnOutsideClick]="false"
   [showCloseButton]="true"
   [visible]="popupVisible"
-  [contentTemplate]="currentTemplate"
-  (onHidden)="popupVisible = false"
+  contentTemplate="currentTemplate"
+  (onHidden)="hidePopup()"
 >
-  <div *dxTemplate="let data of 'departmentTemplate'">
-    <app-tms-popup-modal-department></app-tms-popup-modal-department>
-  </div>
-
-  <div *dxTemplate="let data of 'projectTemplate'">
-    <app-tms-popup-modal-project></app-tms-popup-modal-project>
-  </div>
-
-  <div *dxTemplate="let data of 'taskTemplate'">
-    <app-tms-popup-modal-task></app-tms-popup-modal-task>
+  <div *dxTemplate="let data of 'currentTemplate'">
+    <ng-content></ng-content>
   </div>
 </dx-popup>

@@ -11,21 +11,33 @@
   <div class="tms-header--left project">
     <div class="tms-header__button-icon apps"></div>
     <div class="tms-header__button-icon home-container">
-      <div class="tms-header__button-icon home"></div>
+      <div
+        class="tms-header__button-icon home"
+        routerLink="/dashboard"
+      ></div>
     </div>
     <div>MISA AMIS TMS</div>
     <div class="tms-header__button-icon setting-container">
       <div class="tms-header__button-icon setting"></div>
     </div>
+
+    <!-- Các đường link dẫn đến các trang project khác nhau -->
     <div class="tms-header__links">
-      <div class="tms-header__link" *ngFor="let link of headerLinks">
+      <a
+        class="tms-header__link"
+        *ngFor="let link of headerLinks; let linkIndex = index"
+        [routerLink]="['/project']" [queryParams]="{Type: link['Type']}" queryParamsHandling="merge"
+        [ngClass]="{'tms-header__link--active': currentLink === linkIndex}"
+        (click)="activeLink(linkIndex)"
+      >
         {{ link['Name'] }}
-      </div>
+      </a>
     </div>
   </div>
 
   <!-- Phần xuất hiện chung ở các page -->
   <div class="tms-header--right">
+    <!-- Nút để mở các popup thêm mới -->
     <div class="tms-header__button-group">
       <div
         class="tms-header__button tms-header__button--add"
@@ -44,7 +56,7 @@
       </div>
     </div>
 
-    <!-- Popup chức năng -->
+    <!-- Popup chức năng, sẽ chia thành component riêng sau -->
     <dx-popover
       target="#tms-header__dropdown-button"
       position="bottom"
@@ -63,7 +75,7 @@
             >
               <div
                 class="tms-header__dropdown-icon"
-                [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item.itemIcon + '.svg)'}"
+                [ngStyle]="{backgroundImage: 'url(../../../assets/icons/' + item['itemIcon'] + '.svg)'}"
               ></div>
               <div>{{item['itemText']}}</div>
             </div>
@@ -86,3 +98,22 @@
     </div>
   </div>
 </div>
+
+<app-tms-popup-modal
+  [popupVisible]="popupVisible"
+  (onPopupHidden)="popupVisible = false"
+  [modalTitle]="popupTitle"
+  [modalWidth]="popupWidth"
+>
+  <app-tms-popup-modal-department
+    *ngIf="currentPopupType === modalEnums['ModalTypeDepartment']"
+  ></app-tms-popup-modal-department>
+
+  <app-tms-popup-modal-project
+    *ngIf="currentPopupType === modalEnums['ModalTypeProject']"
+  ></app-tms-popup-modal-project>
+
+  <app-tms-popup-modal-task
+    *ngIf="currentPopupType === modalEnums['ModalTypeTask']"
+  ></app-tms-popup-modal-task>
+</app-tms-popup-modal>

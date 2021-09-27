@@ -14,8 +14,16 @@
   </div>
 
   <dx-text-box
+    [class]="bonusClass"
     [placeholder]="inputPlaceholder"
     width="100%"
+    [mode]="inputMode"
     [height]="textFieldHeight"
-  ></dx-text-box>
+  >
+    <dxi-button
+      *ngIf="bonusButton"
+      name="extra"
+      location="after"
+      [options]="bonusButton"></dxi-button>
+  </dx-text-box>
 </div>

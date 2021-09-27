@@ -1,5 +1,5 @@
-import { MODAL_CONSTANTS } from '../../../constants/modal-base';
-import { Component, OnInit } from '@angular/core';
+import {MODAL_CONSTANTS} from '../../../constants/modal-base';
+import {Component, OnInit} from '@angular/core';
 
 import {TmsPopupService} from "../../../services/tms-popup.service";
 

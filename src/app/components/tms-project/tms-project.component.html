@@ -5,8 +5,13 @@
 
   <div class="tms-project--main">
     <app-tms-grid
+      *ngIf="router.url.includes('Type=' + projectPages['ProjectGrid'])"
       [gridData]="tasksData"
       [taskColumns]="taskColumns"
     ></app-tms-grid>
+
+    <app-tms-report
+      *ngIf="router.url.includes('Type=' + projectPages['ProjectReport'])"
+    ></app-tms-report>
   </div>
 </div>

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { DxTextAreaModule } from 'devextreme-angular';
 
-import { TmsTextAreaComponent } from '../tms-text-area/tms-text-area.component';
+import { TmsTextAreaComponent } from './tms-text-area.component';
 
 @NgModule({
   declarations: [TmsTextAreaComponent],

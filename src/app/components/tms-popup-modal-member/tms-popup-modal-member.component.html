@@ -1,0 +1,55 @@
+<div class="tms-modal__member">
+  <!-- Các công cụ lọc dữ liệu bảng -->
+  <div class="tms-modal__member-filter">
+    <app-tms-text-field
+      [ngStyle]="{width: '60%'}"
+      inputMode="search"
+      [inputPlaceholder]="modalConst['ModalFieldSearchPlaceholder']"
+    ></app-tms-text-field>
+
+    <app-tms-text-field
+      [ngStyle]="{width: '40%'}"
+    ></app-tms-text-field>
+  </div>
+
+  <!-- Thông tin số lượng chọn -->
+  <div class="tms-modal__member-selection">
+    <div>0 {{ modalConst['SelectingMember'] }}</div>
+    <div>{{ modalConst['SelectionUndo'] }}</div>
+  </div>
+
+  <!-- Danh sách nhân viên dạng bảng -->
+  <dx-data-grid
+    [dataSource]="gridData"
+    keyExpr="UserID"
+    height="273"
+    [allowColumnResizing]="false"
+    [showBorders]="false"
+    [showRowLines]="false"
+    [showColumnLines]="false"
+    [hoverStateEnabled]="true"
+    [rowAlternationEnabled]="true"
+  >
+    <dxo-sorting mode="none"></dxo-sorting>
+
+    <dxo-scrolling
+      [scrollByContent]="true"
+      [scrollByThumb]="true"
+      showScrollbar="always"
+      mode="virtual"
+    ></dxo-scrolling>
+
+    <!--<dxo-selection mode="multiple"></dxo-selection>-->
+
+    <dxi-column
+      *ngFor="let column of gridColumns"
+      alignment="left"
+      [caption]="column['ColName']"
+      [dataField]="column['ColField']"
+      width="auto"
+    ></dxi-column>
+  </dx-data-grid>
+
+  <!-- Footer của modal -->
+  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+</div>

@@ -1,5 +1,5 @@
-@use '../../../../../styles/colors' as *;
-@use '../../../../../styles/mixins' as *;
+@use '../../../styles/colors' as *;
+@use '../../../styles/mixins' as *;
 
 .hello {
   position: absolute;
@@ -55,11 +55,11 @@
       margin: 0 8px;
 
       &.important {
-        background-image: url('../../../../../assets/icons/tms-icon-important.svg');
+        background-image: url('../../../assets/icons/tms-icon-important.svg');
       }
 
       &.urgent {
-        background-image: url('../../../../../assets/icons/tms-icon-urgent.svg');
+        background-image: url('../../../assets/icons/tms-icon-urgent.svg');
       }
     }
   }
@@ -87,11 +87,11 @@
       @include icon-size-default;
 
       &.desc {
-        background-image: url('../../../../../assets/icons/tms-icon-list.svg');
+        background-image: url('../../../assets/icons/tms-icon-list.svg');
       }
 
       &.add {
-        background-image: url('../../../../../assets/icons/tms-icon-add-blue.svg');
+        background-image: url('../../../assets/icons/tms-icon-add-blue.svg');
       }
     }
   }
@@ -115,11 +115,11 @@
       @include icon-size-large;
 
       &.assignee {
-        background-image: url('../../../../../assets/icons/tms-icon-pick-doer.svg');
+        background-image: url('../../../assets/icons/tms-icon-pick-doer.svg');
       }
 
       &.date {
-        background-image: url('../../../../../assets/icons/tms-icon-pick-date.svg');
+        background-image: url('../../../assets/icons/tms-icon-pick-date.svg');
       }
     }
   }
@@ -139,7 +139,7 @@
       @include icon-size-default;
 
       &.related {
-        background-image: url('../../../../../assets/icons/tms-icon-related.svg');
+        background-image: url('../../../assets/icons/tms-icon-related.svg');
       }
     }
   }

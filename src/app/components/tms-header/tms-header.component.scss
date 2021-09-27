@@ -24,6 +24,16 @@
     font-family: "GoogleSans-Light", sans-serif;
     margin-right: 24px;
     cursor: pointer;
+    color: $tms-color-text-link;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &--active {
+      font-family: "GoogleSans-Regular", sans-serif;
+      border-bottom: 3px solid $tms-color-blue;
+    }
   }
 
   &__widget {

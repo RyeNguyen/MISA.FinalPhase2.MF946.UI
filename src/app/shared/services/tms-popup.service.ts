@@ -24,11 +24,4 @@ export class TmsPopupService {
     this._popupModeSource.next(mode);
     this._popupVisibleSource.next(visible);
   }
-
-  // getPopupSubject(): Observable<any> {
-  //   return {
-  //     popupVisible: this.popupVisible$,
-  //     popupMode: this.popupMode$
-  //   }
-  // }
 }

@@ -1,0 +1,25 @@
+<div class="tms-sidebar__dropdown-container">
+  <div class="tms-sidebar__dropdown" (click)="toggleDropdown()">
+    <div
+      *ngIf="dropdownItems.length !== 0"
+      class="tms-sidebar__arrow"
+      [ngClass]="{'tms-rotate-90deg': !dropdownVisible}"
+    ></div>
+    {{ dropdownTitle }}
+  </div>
+
+  <div
+    class="tms-sidebar__dropdown-items"
+    *ngIf="dropdownItems.length !== 0 && dropdownVisible"
+  >
+    <div
+      class="tms-sidebar__dropdown-item"
+      *ngFor="let item of dropdownItems"
+      [routerLink]="['/project']"
+      [queryParams]="{Type: 1, ProjectID: item['ProjectID'], DepartmentID: item['DepartmentID']}"
+      queryParamsHandling="merge"
+    >
+      {{ item['ProjectName'] }}
+    </div>
+  </div>
+</div>

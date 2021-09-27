@@ -22,5 +22,20 @@
     </div>
 
     <app-tms-sidebar-textbox></app-tms-sidebar-textbox>
+
+    <div [ngStyle]="{height: '8px'}"></div>
+
+    <!-- Dropdown công việc cá nhân -->
+    <app-tms-sidebar-dropdown
+      [dropdownTitle]="searchedData['ProjectsPersonal']['DepartmentName']"
+      [dropdownItems]="searchedData['ProjectsPersonal']['ListProject']"
+    ></app-tms-sidebar-dropdown>
+
+    <!-- Dropdown công việc các phòng ban -->
+    <app-tms-sidebar-dropdown
+      *ngFor="let data of searchedData['Departments']"
+      [dropdownTitle]="data['DepartmentName']"
+      [dropdownItems]="data['ListProject']"
+    ></app-tms-sidebar-dropdown>
   </div>
 </div>

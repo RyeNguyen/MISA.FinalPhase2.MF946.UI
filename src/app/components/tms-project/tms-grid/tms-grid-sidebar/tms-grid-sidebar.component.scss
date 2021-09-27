@@ -1,4 +1,5 @@
 @use '../../../../../styles/colors' as *;
+@use '../../../../../styles/mixins' as *;
 
 .tms-grid__sidebar {
   position: absolute;
@@ -7,4 +8,39 @@
   background-color: $tms-color-sidebar;
   width: 64px;
   height: 100vh;
+  padding: 12px 0 70px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &--top,
+  &--bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &-icon {
+    @include background-template;
+    @include icon-size-default;
+
+    &.filter {
+      background-image: url('../../../../../assets/icons/tms-icon-filter.svg');
+    }
+
+    &.filter-user  {
+      @include icon-size-large;
+      background-image: url('../../../../../assets/icons/tms-icon-filter-user.svg');
+    }
+
+    &.work-rate {
+      background-image: url('../../../../../assets/icons/tms-icon-work-rating.svg');
+    }
+
+    &.export {
+      background-image: url('../../../../../assets/icons/tms-icon-export.svg');
+    }
+  }
 }

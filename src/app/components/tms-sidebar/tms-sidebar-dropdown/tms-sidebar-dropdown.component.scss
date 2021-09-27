@@ -1,0 +1,41 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/colors' as *;
+
+.tms-sidebar__dropdown {
+  min-height: 48px;
+  font-size: 17px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 64px 9px 40px;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $tms-color-sidebar-hover;
+  }
+
+  &-items {
+    margin-top: 8px;
+  }
+
+  &-item {
+    height: 42px;
+    padding: 0 32px 0 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $tms-color-sidebar-hover;
+    }
+  }
+}
+
+.tms-sidebar__arrow {
+  @include icon-size-small;
+  @include background-template;
+  background-image: url('../../../../assets/icons/tms-icon-arrow-down.svg');
+  position: absolute;
+  left: 16px;
+}

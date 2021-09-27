@@ -5,7 +5,7 @@ import {ManagementComponent} from './management.component';
 
 import {TmsProjectModule} from '../tms-project/tms-project.module';
 import {TmsDashboardModule} from '../tms-dashboard/tms-dashboard.module';
-import {TmsPopupModalModule} from "../../shared/components/tms-popup-modal/tms-popup-modal.module";
+//import {TmsPopupModalModule} from "../../shared/components/tms-popup-modal/tms-popup-modal.module";
 import {ManagementRoutingModule} from './management-routing.module';
 
 @NgModule({
@@ -20,7 +20,7 @@ import {ManagementRoutingModule} from './management-routing.module';
     ManagementRoutingModule,
     TmsProjectModule,
     TmsDashboardModule,
-    TmsPopupModalModule
+    //TmsPopupModalModule
   ]
 })
 

@@ -1,4 +1,5 @@
 @use '../../../../styles/colors' as *;
+@use '../../../../styles/mixins' as *;
 
 .tms-grid {
   position: relative;
@@ -10,5 +11,58 @@
     background-color: $tms-color-white;
     border-bottom: 0.5px solid $tms-color-grey;
     border-radius: 8px 8px 0 0;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-icon {
+      @include icon-size-small;
+      @include background-template;
+
+      &.filter {
+        background-image: url('../../../../assets/icons/tms-icon-grid-filter.svg');
+      }
+
+      &.status {
+        background-image: url('../../../../assets/icons/tms-icon-grid-status.svg');
+      }
+
+      &.sort {
+        background-image: url('../../../../assets/icons/tms-icon-grid-sort.svg');
+      }
+
+      &.select {
+        background-image: url('../../../../assets/icons/tms-icon-grid-select.svg');
+      }
+    }
+
+    &-text {
+      font-family: "GoogleSans-Light", sans-serif;
+      font-size: 13px;
+    }
+  }
+
+  &__icon {
+    @include icon-size-default;
+    @include background-template;
+
+    &.add-col {
+      background-image: url('../../../../assets/icons/tms-icon-add-col.svg');
+    }
+
+    &.success {
+      background-image: url('../../../../assets/icons/tms-icon-success.svg');
+    }
+
+    &.date {
+      background-image: url('../../../../assets/icons/tms-icon-date.svg');
+    }
   }
 }

@@ -1,0 +1,14 @@
+.tms-modal__member {
+  padding: 0 24px;
+
+  &-filter {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-selection {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 4px;
+  }
+}

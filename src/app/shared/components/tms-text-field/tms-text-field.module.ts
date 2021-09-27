@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { DxTextBoxModule } from 'devextreme-angular';
 
-import { TmsTextFieldComponent } from '../tms-text-field/tms-text-field.component';
+import { TmsTextFieldComponent } from './tms-text-field.component';
 
 @NgModule({
   declarations: [TmsTextFieldComponent],

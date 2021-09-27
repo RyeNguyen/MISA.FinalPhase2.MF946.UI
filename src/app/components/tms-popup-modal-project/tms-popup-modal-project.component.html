@@ -1,0 +1,55 @@
+<div class="tms-modal__project">
+  <app-tms-text-field
+    [inputLabel]="modalProjectVariables['ModalFieldNameLabel']"
+    [inputPlaceholder]="modalProjectVariables['ModalFieldNamePlaceholder']"
+    [isRequired]="true"
+  ></app-tms-text-field>
+
+  <div class="tms-text-field__group">
+    <app-tms-select-box
+      [selectBoxLabel]="modalProjectVariables['ModalFieldDepartmentLabel']"
+      [inputPlaceholder]="modalProjectVariables['ModalFieldDepartmentPlaceholder']"
+      [selectBoxData]="departmentOptions"
+      [ngStyle]="{width: '50%'}"
+    ></app-tms-select-box>
+
+    <app-tms-date-box
+      [dateBoxLabel]="modalProjectVariables['ModalFieldFromDateLabel']"
+      [inputPlaceholder]="modalProjectVariables['ModalFieldFromDatePlaceholder']"
+      [ngStyle]="{width: '25%'}"
+    ></app-tms-date-box>
+
+    <app-tms-date-box
+      [dateBoxLabel]="modalProjectVariables['ModalFieldToDateLabel']"
+      [inputPlaceholder]="modalProjectVariables['ModalFieldToDatePlaceholder']"
+      [ngStyle]="{width: '25%'}"
+    ></app-tms-date-box>
+  </div>
+
+  <app-tms-text-area
+  [inputLabel]="modalProjectVariables['ModalFieldDescriptionLabel']"
+  [inputPlaceholder]="modalProjectVariables['ModalFieldDescriptionPlaceholder']"
+  inputHeight="78px"
+  ></app-tms-text-area>
+
+  <app-tms-text-field
+    [inputLabel]="modalProjectVariables['ModalFieldMemberLabel']"
+    [inputPlaceholder]="modalProjectVariables['ModalFieldMemberPlaceholder']"
+    bonusClass="tms-text-field__with-list"
+    [bonusButton]="selectMemberButton"
+  ></app-tms-text-field>
+
+  <app-tms-user-list></app-tms-user-list>
+
+  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+</div>
+
+<app-tms-popup-modal
+  [popupVisible]="innerVisible"
+  (onPopupHidden)="innerVisible = false"
+  [modalTitle]="popupTitle"
+  [modalWidth]="popupWidth"
+>
+  <app-tms-popup-modal-member></app-tms-popup-modal-member>
+</app-tms-popup-modal>
+

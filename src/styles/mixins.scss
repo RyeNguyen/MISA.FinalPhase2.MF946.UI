@@ -19,6 +19,10 @@
   height: 16px;
 }
 
+@mixin default-box-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 @mixin input-box-shadow {
   box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
 }

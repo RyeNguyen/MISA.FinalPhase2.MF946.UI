@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
 import {HeaderItemsDark} from "../../shared/models/header-items-dark";
 
-import {Customer, MockDataService} from "../../services/mock-data.service";
+import {MockDataService} from "../../data-transfer/mock-data.service";
 import {iconItem} from "../../shared/interfaces/icon-item";
 import {TaskColumns} from "../../shared/models/task-columns";
+import {PROJECT_PAGES} from "../../shared/enum/project-pages";
 
 @Component({
   selector: 'app-tms-project',
@@ -14,11 +17,13 @@ export class TmsProjectComponent implements OnInit {
   tasksData: any;
   headerItems: iconItem[] = [];
   taskColumns: any;
+  projectPages: any;
 
-  constructor(private service: MockDataService) {
+  constructor(public router: Router, private service: MockDataService) {
     this.tasksData = this.service.getCustomers();
     this.headerItems = HeaderItemsDark;
     this.taskColumns = TaskColumns;
+    this.projectPages = PROJECT_PAGES;
   }
 
   ngOnInit(): void {

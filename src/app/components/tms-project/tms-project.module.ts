@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {TmsProjectComponent} from "./tms-project.component";
 import {TmsGridModule} from './tms-grid/tms-grid.module';
 import {TmsHeaderModule} from "../tms-header/tms-header.module";
+import {TmsReportModule} from "./tms-report/tms-report.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {TmsHeaderModule} from "../tms-header/tms-header.module";
   imports: [
     BrowserModule,
     TmsGridModule,
-    TmsHeaderModule
+    TmsHeaderModule,
+    TmsReportModule
   ]
 })
 
