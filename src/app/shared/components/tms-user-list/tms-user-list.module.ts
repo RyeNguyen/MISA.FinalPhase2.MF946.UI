@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsUserListComponent} from "./tms-user-list.component";
 import {DxScrollViewModule} from "devextreme-angular";
@@ -7,6 +7,6 @@ import {DxScrollViewModule} from "devextreme-angular";
 @NgModule({
   declarations: [TmsUserListComponent],
   exports: [TmsUserListComponent],
-  imports: [BrowserModule, DxScrollViewModule],
+  imports: [CommonModule, DxScrollViewModule],
 })
 export class TmsUserListModule {}

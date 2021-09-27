@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsPopupModalTaskComponent} from "./tms-popup-modal-task.component";
 import {TmsTextFieldModule} from "../../shared/components/tms-text-field/tms-text-field.module";
@@ -13,7 +13,7 @@ import {TmsPopupModalFooterModule} from "../../shared/components/tms-popup-modal
     TmsPopupModalTaskComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsTextFieldModule,
     TmsPopupModalFooterModule
   ],

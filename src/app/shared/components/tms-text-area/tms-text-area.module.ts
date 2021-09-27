@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { DxTextAreaModule } from 'devextreme-angular';
 
@@ -8,6 +8,6 @@ import { TmsTextAreaComponent } from './tms-text-area.component';
 @NgModule({
   declarations: [TmsTextAreaComponent],
   exports: [TmsTextAreaComponent],
-  imports: [BrowserModule, DxTextAreaModule],
+  imports: [CommonModule, DxTextAreaModule],
 })
 export class TmsTextAreaModule {}

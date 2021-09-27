@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {DxPopupModule, DxTemplateModule,} from 'devextreme-angular';
 
@@ -13,7 +13,7 @@ import {TmsPopupModalComponent} from './tms-popup-modal.component';
     TmsPopupModalComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DxPopupModule,
     DxTemplateModule,
   ],

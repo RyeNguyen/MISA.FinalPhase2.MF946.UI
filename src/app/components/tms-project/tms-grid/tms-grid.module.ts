@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsGridComponent} from "./tms-grid.component";
 import {TmsGridSidebarComponent} from './tms-grid-sidebar/tms-grid-sidebar.component';
@@ -19,7 +19,7 @@ import {TmsPopupModalTaskModule} from "../../tms-popup-modal-task/tms-popup-moda
     TmsGridSidebarComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DxDataGridModule,
     TmsChartDoughnutModule,
     TmsPopupModalModule,

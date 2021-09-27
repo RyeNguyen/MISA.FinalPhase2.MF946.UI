@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsPopupModalFooterComponent} from "./tms-popup-modal-footer.component";
 import {TmsButtonModule} from "../../tms-button/tms-button.module";
@@ -12,7 +12,7 @@ import {TmsButtonModule} from "../../tms-button/tms-button.module";
     TmsPopupModalFooterComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsButtonModule
   ],
 })

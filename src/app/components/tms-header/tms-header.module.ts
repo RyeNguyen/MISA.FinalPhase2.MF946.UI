@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsHeaderComponent} from "./tms-header.component";
 
@@ -23,7 +23,7 @@ import {
     TmsHeaderComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DxPopoverModule,
     DxTemplateModule,
     DxListModule,

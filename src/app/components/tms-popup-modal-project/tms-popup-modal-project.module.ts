@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsPopupModalProjectComponent} from "./tms-popup-modal-project.component";
 import {TmsUserListModule} from "../../shared/components/tms-user-list/tms-user-list.module";
@@ -19,7 +19,7 @@ import {TmsPopupModalMemberModule} from "../tms-popup-modal-member/tms-popup-mod
     TmsPopupModalProjectComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsUserListModule,
     TmsTextFieldModule,
     TmsTextAreaModule,

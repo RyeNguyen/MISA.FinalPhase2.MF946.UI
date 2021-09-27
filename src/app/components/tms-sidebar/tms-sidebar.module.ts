@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import {DxTextBoxModule} from "devextreme-angular";
 
 import {TmsSidebarComponent} from "./tms-sidebar.component";
@@ -19,7 +19,7 @@ import {ManagementRoutingModule} from "../management/management-routing.module";
     TmsSidebarTextboxComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DxTextBoxModule,
     ManagementRoutingModule
   ]

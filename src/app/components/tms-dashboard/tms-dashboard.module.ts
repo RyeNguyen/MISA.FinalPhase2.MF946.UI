@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 
 import {TmsDashboardComponent} from "./tms-dashboard.component";
 import {TmsSidebarModule} from '../tms-sidebar/tms-sidebar.module';
@@ -13,7 +13,7 @@ import {TmsHeaderModule} from "../tms-header/tms-header.module";
     TmsDashboardComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsSidebarModule,
     TmsHeaderModule
   ]

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsPopupModalMemberComponent} from "./tms-popup-modal-member.component";
 import {TmsTextFieldModule} from "../../shared/components/tms-text-field/tms-text-field.module";
@@ -14,7 +14,7 @@ import {DxDataGridModule} from "devextreme-angular";
     TmsPopupModalMemberComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsTextFieldModule,
     TmsPopupModalFooterModule,
     DxDataGridModule

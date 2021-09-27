@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsReportComponent} from "./tms-report.component";
 import {DxChartModule} from "devextreme-angular";
@@ -12,7 +12,7 @@ import {DxChartModule} from "devextreme-angular";
     TmsReportComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DxChartModule
   ]
 })

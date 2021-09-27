@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import {TmsProjectComponent} from "./tms-project.component";
 import {TmsGridModule} from './tms-grid/tms-grid.module';
@@ -14,7 +14,7 @@ import {TmsReportModule} from "./tms-report/tms-report.module";
     TmsProjectComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     TmsGridModule,
     TmsHeaderModule,
     TmsReportModule
