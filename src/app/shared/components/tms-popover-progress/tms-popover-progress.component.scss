@@ -1,0 +1,65 @@
+@use '../../../../styles/mixins' as *;
+
+.tms-progress {
+  &__container {
+    padding: 16px 24px;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-family: "GoogleSans-Regular", sans-serif;
+    font-weight: 500;
+  }
+
+  &__slider {
+    &-bar {
+      width: 100%;
+      margin: 16px 0 5px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-btn {
+      @include background-template;
+      @include icon-size-default;
+
+      &.minus {
+        background-image: url('../../../../assets/icons/tms-icon-minus.svg');
+      }
+
+      &.plus {
+        background-image: url('../../../../assets/icons/tms-icon-add-blue.svg');
+      }
+    }
+  }
+
+  &__steps {
+    width: 95%;
+    margin: 0 0 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__step {
+    width: 20%;
+  }
+
+  &__input-field {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .tms-text-field {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &__footer {
+    margin-top: -8px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

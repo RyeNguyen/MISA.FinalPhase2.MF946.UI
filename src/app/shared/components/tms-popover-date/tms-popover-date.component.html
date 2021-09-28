@@ -1,0 +1,18 @@
+<dx-popover
+  [target]="popoverTarget"
+  position="bottom"
+  [width]="333"
+  [visible]="popoverVisible"
+  (onHidden)="hidePopover()"
+>
+  <div class="tms-calendar__container">
+    <div class="tms-calendar__header">
+      Hạn hoàn thành
+      <app-tms-text-field [ngStyle]="{width: '50%'}"></app-tms-text-field>
+    </div>
+    <dx-calendar width="100%"></dx-calendar>
+    <div class="tms-calendar__footer">
+      <app-tms-button buttonText="Lưu"></app-tms-button>
+    </div>
+  </div>
+</dx-popover>

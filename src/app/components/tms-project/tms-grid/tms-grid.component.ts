@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, AfterContentChecked, ChangeDetectorRef} from '@angular/core';
 
 import {MODAL_ENUMS} from "../../../shared/enum/modal-base";
 import {ICON_SIZES} from "../../../shared/enum/icon-size";
 import {doughnutItem} from "../../../shared/interfaces/doughnut-item";
 import {GRID_CONSTANTS} from "../../../shared/constants/grid";
+import {POPOVER_MODES} from "../../../shared/enum/popover-modes";
 
 import {TmsPopupService} from "../../../shared/services/tms-popup.service";
 
@@ -12,19 +13,29 @@ import {TmsPopupService} from "../../../shared/services/tms-popup.service";
   templateUrl: './tms-grid.component.html',
   styleUrls: ['./tms-grid.component.scss']
 })
-export class TmsGridComponent implements OnInit {
+export class TmsGridComponent implements OnInit, AfterContentChecked {
   @Input() gridData: any;
   @Input() taskColumns: any;
   gridConst: any;
+  popoverModes: any;
 
   popupVisible: boolean = false;
+  popoverProgressVisible: boolean = false;
+  popoverDateVisible: boolean = false;
+  popoverTarget: any = '';
   popupWidth: number = MODAL_ENUMS.ModalWidthLarge;
 
-  constructor(private _popupService: TmsPopupService) {
+  selectedTask: any;
+
+  constructor(private _popupService: TmsPopupService, private cdref: ChangeDetectorRef) {
     this.gridConst = GRID_CONSTANTS;
+    this.popoverModes = POPOVER_MODES;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
   }
 
   /**
@@ -89,6 +100,8 @@ export class TmsGridComponent implements OnInit {
    * Author: NQMinh (26/09/2021)
    */
   openModal(data: any) {
+    console.log(data)
+    this.selectedTask = data['data'];
     this.popupVisible = true;
   }
 
@@ -121,5 +134,20 @@ export class TmsGridComponent implements OnInit {
       }
     ]
     return doughnutData;
+  }
+
+  /**
+   * Phương thức mở popover khi nhấn vào ô tương ứng
+   * @param e
+   * Author: NQMinh (26/09/2021)
+   * @param popoverMode
+   */
+  openPopover(e: any, popoverMode: number) {
+    this.popoverTarget = e.target;
+    if (popoverMode === this.popoverModes['ProgressMode']) {
+      this.popoverProgressVisible = true;
+    } else {
+      this.popoverDateVisible = true;
+    }
   }
 }

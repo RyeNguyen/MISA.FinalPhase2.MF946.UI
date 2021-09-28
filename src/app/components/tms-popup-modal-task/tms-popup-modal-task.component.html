@@ -1,14 +1,30 @@
 <div class="tms-modal__task">
+  <!-- Nút tùy chỉnh tiến độ, chỉ xuất hiện ở modal sửa thông tin công việc -->
+  <div *ngIf="editMode" class="tms-modal__progress-btn">
+    <div class="tms-modal__progress-btn--left">{{ modalConst['ProgressStatusUnfinished'] }}</div>
+
+    <div class="tms-modal__progress-btn--middle"></div>
+
+    <div
+      class="tms-modal__progress-btn--right"
+      (click)="openPopover($event, popoverModes['ProgressMode'])"
+    >
+      {{ taskData['Process'] }}%
+      <div class="tms-modal__progress-btn-icon"></div>
+    </div>
+  </div>
+
   <div class="tms-modal__task-container">
     <div class="tms-modal__task--left">
+      <!-- Các mục fix cứng, không tập trung phần này -->
       <div class="tms-modal__task-header">
         <div class="tms-modal__task-header--left">
           <div class="tms-modal__task-header-dropdown">
-            Cá nhân
+            {{ taskData['ProjectName'] ? taskData['ProjectName'] : 'Cá nhân' }}
           </div>
 
           <div class="tms-modal__task-header-dropdown">
-            Cần thực hiện
+            {{ modalConst['WidgetTaskGroupSelector'] }}
           </div>
         </div>
 
@@ -18,35 +34,64 @@
         </div>
       </div>
 
+      <!-- Input nhập tên công việc -->
       <div class="tms-modal__task-input">
-        <input type="text" placeholder="Nhập tên công việc">
+        <input
+          type="text"
+          [placeholder]="modalConst['InputPlaceholder']"
+          [(ngModel)]="taskData['TaskName']">
       </div>
 
+      <!-- Mục người giao việc, chỉ xuất hiện ở modal sửa -->
+      <div class="tms-modal__task-assigner" *ngIf="editMode">
+        <span class="tms-modal__task-assigner-label">{{ modalConst['AssignerLabel'] }} </span>
+        <span class="tms-modal__task-assigner-name">Nguyễn Quang Minh</span>
+      </div>
+
+      <!-- Tiện ích khác, chưa quan trọng -->
       <div class="tms-modal__task-widget">
         <div class="tms-modal__task-widget-icon desc"></div>
-        Nhập mô tả
+        {{ modalConst['WidgetAddDesc'] }}
       </div>
 
+      <!-- Tiện ích khác, chưa quan trọng -->
       <div class="tms-modal__task-widget">
         <div class="tms-modal__task-widget-icon add"></div>
-        Thêm checklist
+        {{ modalConst['WidgetAddChecklist'] }}
       </div>
 
+      <!-- Chỉnh sửa người thực hiện và hạn hoàn thành -->
       <div class="tms-modal__task-selector">
         <div class="tms-modal__task-selector--half">
           <div class="tms-modal__task-selector-icon assignee"></div>
-          Chọn người thực hiện
+          <div class="tms-modal__task-selector-text" *ngIf="!taskData['AssigneeName']">
+            {{ modalConst['WidgetAssigneeSelector'] }}
+          </div>
+          <div class="tms-modal__task-selector-text" *ngIf="taskData['AssigneeName']">
+            <div>{{ modalConst['WidgetAssigneeLabel'] }}</div>
+            <strong>{{ taskData['AssigneeName'] }}</strong>
+          </div>
         </div>
 
-        <div class="tms-modal__task-selector--half">
+        <div
+          class="tms-modal__task-selector--half"
+          (click)="openPopover($event, popoverModes['CalendarMode'])"
+        >
           <div class="tms-modal__task-selector-icon date"></div>
-          Chọn hạn hoàn thành
+          <div class="tms-modal__task-selector-text" *ngIf="!taskData['EndDate']">
+            {{ modalConst['WidgetDateSelector'] }}
+          </div>
+          <div class="tms-modal__task-selector-text" *ngIf="taskData['EndDate']">
+            <div>{{ modalConst['WidgetDateLabel'] }}</div>
+            <strong>{{ formatDate(taskData['EndDate']) }}</strong>
+          </div>
         </div>
       </div>
 
+      <!-- Tiện ích khác, chưa quan trọng -->
       <div class="tms-modal__task-widget">
         <div class="tms-modal__task-widget-icon add"></div>
-        Thêm công việc con
+        {{ modalConst['WidgetAddSubtask'] }}
       </div>
     </div>
 
@@ -58,5 +103,19 @@
     </div>
   </div>
 
-  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+  <app-tms-popup-modal-footer *ngIf="!editMode"></app-tms-popup-modal-footer>
 </div>
+
+<!-- Popover cập nhật tiến độ -->
+<app-tms-popover-progress
+  [popoverTarget]="popoverTarget"
+  [popoverVisible]="popoverProgressVisible"
+  (onPopoverHidden)="popoverProgressVisible = false"
+></app-tms-popover-progress>
+
+<!-- Popover cập nhật hạn hoàn thành -->
+<app-tms-popover-date
+  [popoverTarget]="popoverTarget"
+  [popoverVisible]="popoverDateVisible"
+  (onPopoverHidden)="popoverDateVisible = false"
+></app-tms-popover-date>

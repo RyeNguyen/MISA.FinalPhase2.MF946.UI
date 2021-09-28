@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 import {HeaderFunctions} from "../../shared/models/header-functions";
 import {iconItem} from "../../shared/interfaces/icon-item";
@@ -51,7 +52,7 @@ export class TmsHeaderComponent implements OnInit {
 
   @Input() headerItems: iconItem[] = [];
 
-  constructor(private _popupService: TmsPopupService) {
+  constructor(private _router: Router, private _popupService: TmsPopupService) {
     this.headerLinks = HeaderLinks;
     this.headerFunctions = HeaderFunctions;
     this.headerVariables = HEADER_CONSTANTS;
@@ -62,6 +63,8 @@ export class TmsHeaderComponent implements OnInit {
     this._popupService.popupVisible$.subscribe(popupVisible => {
       this.popupVisible = popupVisible;
     });
+
+    this.setDefaultActive();
   }
 
   /**
@@ -100,6 +103,19 @@ export class TmsHeaderComponent implements OnInit {
     else if (this.currentPopupType === MODAL_ENUMS.ModalTypeProject) {
       this.popupTitle = MODAL_PROJECT_CONSTANTS.ModalTitle;
       this.popupWidth = MODAL_ENUMS.ModalWidthBig;
+    }
+  }
+
+  /**
+   * Phương thức đặt link active mặc định trong trường hợp page reload
+   * Author: NQMinh (27/09/2021)
+   */
+  setDefaultActive() {
+    for (let i = 0; i < this.headerLinks.length; i++) {
+      if (this._router.url.includes('Type=' + this.headerLinks[i]['Type'])) {
+        this.currentLink = this.headerLinks[i]['Type'] - 1;
+        break;
+      }
     }
   }
 

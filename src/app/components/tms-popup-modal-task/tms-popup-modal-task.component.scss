@@ -1,10 +1,37 @@
 @use '../../../styles/colors' as *;
 @use '../../../styles/mixins' as *;
 
-.hello {
+.tms-modal__progress-btn {
   position: absolute;
+  height: 34px;
   top: 16px;
-  right: 30px;
+  left: 24px;
+  padding: 5px 8px 5px 12px;
+  border: 1px solid $tms-color-text;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  &--middle {
+    width: 1px;
+    height: 100%;
+    background-color: $tms-color-text;
+  }
+
+  &--right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: "GoogleSans-Regular", sans-serif;
+  }
+
+  &-icon {
+    @include background-template;
+    @include icon-size-small;
+    background-image: url('../../../assets/icons/tms-icon-arrow-down-dark.svg');
+  }
 }
 
 .tms-modal__task {
@@ -66,11 +93,25 @@
 
   &-input {
     margin-bottom: 16px;
+    width: 100%;
 
     input {
+      width: 100%;
       border: none;
       font-size: 20px;
       font-weight: 700;
+    }
+  }
+
+  &-assigner {
+    margin-bottom: 16px;
+
+    &-label {
+      margin-right: 4px;
+    }
+
+    &-name {
+      color: $tms-color-blue;
     }
   }
 

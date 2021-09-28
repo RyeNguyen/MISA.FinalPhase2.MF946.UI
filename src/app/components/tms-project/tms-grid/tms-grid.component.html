@@ -34,6 +34,16 @@
     [hoverStateEnabled]="true"
     columnResizingMode="widget"
   >
+    <dxo-sorting mode="none"></dxo-sorting>
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-scrolling
+      [scrollByContent]="true"
+      [scrollByThumb]="true"
+      [useNative]="true"
+      showScrollbar="always"
+      mode="virtual"
+    ></dxo-scrolling>
+
     <dxi-column
       caption=""
       width="48"
@@ -54,10 +64,12 @@
       [cellTemplate]="column['CellTemplate']"
     ></dxi-column>
 
+    <!-- Ô header có chức năng lọc cột -->
     <div *dxTemplate="let data of 'headerTemplate'">
       <div class="tms-grid__icon add-col"></div>
     </div>
 
+    <!-- Các ô chứa index các bản ghi -->
     <div *dxTemplate="let data of 'cellTemplate'">
       {{ getRowId(data) }}
     </div>
@@ -79,6 +91,7 @@
     <div
       *dxTemplate="let data of 'donutChartCellTemplate'"
       [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
+      (click)="openPopover($event, popoverModes['ProgressMode'])"
     >
       <!-- Nếu công việc đã hoàn thành thì chỉ hiển thị dấu check -->
       <div
@@ -99,6 +112,7 @@
     <div
       *dxTemplate="let data of 'dateCellTemplate'"
       [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
+      (click)="openPopover($event, popoverModes['CalendarMode'])"
     >
       <div
         class="tms-grid__icon date"
@@ -111,6 +125,19 @@
   <app-tms-grid-sidebar></app-tms-grid-sidebar>
 </div>
 
+<!-- popover cập nhật tiến độ/ngày bắt đầu/hạn hoàn thành -->
+<app-tms-popover-progress
+  [popoverTarget]="popoverTarget"
+  [popoverVisible]="popoverProgressVisible"
+  (onPopoverHidden)="popoverProgressVisible = false"
+></app-tms-popover-progress>
+
+<app-tms-popover-date
+  [popoverTarget]="popoverTarget"
+  [popoverVisible]="popoverDateVisible"
+  (onPopoverHidden)="popoverDateVisible = false"
+></app-tms-popover-date>
+
 <!-- Popup modal công việc -->
 <app-tms-popup-modal
   [popupVisible]="popupVisible"
@@ -118,5 +145,8 @@
   modalTitle=""
   [modalWidth]="popupWidth"
 >
-  <app-tms-popup-modal-task></app-tms-popup-modal-task>
+  <app-tms-popup-modal-task
+    [editMode]="true"
+    [bindedData]="selectedTask"
+  ></app-tms-popup-modal-task>
 </app-tms-popup-modal>

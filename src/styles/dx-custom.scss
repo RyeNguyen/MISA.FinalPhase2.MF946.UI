@@ -87,9 +87,15 @@
   overflow: visible;
 }
 
+//region Button
 .dx-button-has-text .dx-button-content {
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.dx-button-text {
+  font-family: "GoogleSans-Regular", sans-serif;
+  font-size: 15px;
 }
 
 .dx-button-mode-contained {
@@ -103,6 +109,7 @@
   &.dx-state-active {
     background-color: $tms-color-primary-hover;
     border-color: $tms-color-primary-hightlight;
+    color: $tms-color-white;
   }
 }
 
@@ -126,7 +133,9 @@
     }
   }
 }
+//endregion
 
+//region List
 .dx-list .dx-empty-message, .dx-list-item-content {
   height: 40px;
   padding: 0 12px;
@@ -147,12 +156,15 @@
     color: $tms-color-text;
   }
 }
+//endregion
 
+//region Grid
 .dx-datagrid {
   border-radius: 0 0 8px 8px;
   color: $tms-color-text;
   font-family: "GoogleSans-Light", sans-serif;
   font-size: 15px;
+  overflow: hidden;
 }
 
 .dx-datagrid-headers {
@@ -176,7 +188,7 @@
 .dx-datagrid-content .dx-datagrid-table .dx-row > td,
 .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
   height: 44px;
-  padding: 14px 16px 0;
+  padding: 12px 16px 0;
   box-sizing: border-box;
 }
 
@@ -200,7 +212,9 @@
   background-color: $tms-color-blue-light;
   cursor: pointer;
 }
+//endregion
 
+//region Bar chart
 .tms-report__chart {
   .dxc-arg-elements,
   .dxc-val-title,
@@ -213,10 +227,48 @@
       fill: $tms-color-text !important;
     }
   }
+}
+//endregion
 
-  .dxc-val-title {
-    text {
+//region Slider
+.dx-slider {
+  &-bar {
+    height: 12px;
+    border-radius: 8px;
+    margin: 7px 0 0;
+  }
 
+  &-range {
+    height: 100%;
+    border-radius: 8px !important;
+    background-color: $tms-color-grey;
+
+    &.dx-slider-range-visible {
+      background-color: $tms-color-blue;
+    }
+  }
+
+  &-handle {
+    margin-top: -7px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $tms-color-white;
+    background-color: $tms-color-white;
+    box-shadow: 0 1px 5px 2px #9e9e9e;
+    border-radius: 8px;
+  }
+
+  & .dx-state-active {
+    &.dx-slider-handle {
+      background-color: $tms-color-white;
+    }
+  }
+
+  & .dx-state-hover,
+  & .dx-state-focused {
+    &.dx-slider-handle:not(.dx-state-active) {
+      background-color: $tms-color-white;
     }
   }
 }
+//endregion

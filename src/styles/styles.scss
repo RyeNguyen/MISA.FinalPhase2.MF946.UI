@@ -31,3 +31,24 @@ h1 {
 .tms-rotate-90deg {
   transform: rotateZ(-90deg);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  opacity: 0.3;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #878787;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-track {
+  cursor: pointer;
+  background: #f1f1f1;
+  border-radius: 8px;
+}

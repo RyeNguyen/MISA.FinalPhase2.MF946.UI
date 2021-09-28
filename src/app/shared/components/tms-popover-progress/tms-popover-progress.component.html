@@ -1,0 +1,43 @@
+<dx-popover
+  [target]="popoverTarget"
+  position="bottom"
+  [width]="398"
+  [visible]="popoverVisible"
+  (onHidden)="hidePopover()"
+>
+  <div class="tms-progress__container">
+    <div class="tms-progress__title">Tiến độ công việc</div>
+
+    <div class="tms-progress__slider-bar">
+      <div class="tms-progress__slider-btn minus"></div>
+
+      <dx-slider
+        class="tms-progress__slider"
+        [min]="0"
+        [max]="100"
+        width="100%"
+        height="28px"
+      ></dx-slider>
+
+      <div class="tms-progress__slider-btn plus"></div>
+    </div>
+
+    <div class="tms-progress__steps">
+      <div class="tms-progress__step">0 %</div>
+      <div class="tms-progress__step">25 %</div>
+      <div class="tms-progress__step">50 %</div>
+      <div class="tms-progress__step">75 %</div>
+      <div class="tms-progress__step">100 %</div>
+    </div>
+
+    <div class="tms-progress__input-field">
+      Nhập tiến độ
+      <app-tms-text-field [ngStyle]="{width: '78px'}"></app-tms-text-field>
+    </div>
+
+    <div class="tms-progress__footer">
+      <app-tms-button buttonText="Xác nhận"></app-tms-button>
+    </div>
+  </div>
+</dx-popover>
+
