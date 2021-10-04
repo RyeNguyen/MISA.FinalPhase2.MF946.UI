@@ -31,9 +31,16 @@ export class TmsProjectComponent implements OnInit {
     this._currentRoute.queryParams.subscribe(params => {
       this.currentProject = params['ProjectID'];
     })
+    this.getTasks();
+  }
+
+  /**
+   * Phương thức call api lấy dữ liệu công việc
+   * Author: NQMinh (02/10/2021)
+   */
+  getTasks(): void {
     this._taskService.getTasksByProject(this.currentProject).subscribe(data => {
       this.tasksData = data;
     })
   }
-
 }

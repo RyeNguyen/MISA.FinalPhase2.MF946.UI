@@ -91,7 +91,7 @@
     <div
       *dxTemplate="let data of 'donutChartCellTemplate'"
       [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
-      (click)="openPopover($event, popoverModes['ProgressMode'])"
+      (click)="openPopover(data, $event, popoverModes['ProgressMode'])"
     >
       <!-- Nếu công việc đã hoàn thành thì chỉ hiển thị dấu check -->
       <div
@@ -112,7 +112,7 @@
     <div
       *dxTemplate="let data of 'dateCellTemplate'"
       [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
-      (click)="openPopover($event, popoverModes['CalendarMode'])"
+      (click)="openPopover(data, $event, popoverModes['CalendarMode'])"
     >
       <div
         class="tms-grid__icon date"
@@ -129,7 +129,9 @@
 <app-tms-popover-progress
   [popoverTarget]="popoverTarget"
   [popoverVisible]="popoverProgressVisible"
+  [popoverValue]="popoverValue"
   (onPopoverHidden)="popoverProgressVisible = false"
+  (onPopoverSubmitted)="updateTask($event)"
 ></app-tms-popover-progress>
 
 <app-tms-popover-date
@@ -149,5 +151,6 @@
     [editMode]="true"
     [bindedData]="selectedTask"
     [popupVisible]="popupVisible"
+    (onPopupHidden)="reloadData()"
   ></app-tms-popup-modal-task>
 </app-tms-popup-modal>

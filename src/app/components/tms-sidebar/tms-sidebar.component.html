@@ -21,7 +21,9 @@
       </div>
     </div>
 
-    <app-tms-sidebar-textbox></app-tms-sidebar-textbox>
+    <app-tms-sidebar-textbox
+      (onTyping)="searchData($event)"
+    ></app-tms-sidebar-textbox>
 
     <div [ngStyle]="{height: '8px'}"></div>
 
@@ -37,6 +39,7 @@
         *ngFor="let data of searchedData"
         [dropdownTitle]="data['DepartmentName']"
         [dropdownItems]="data['ProjectList']"
+        [onSearching]="onSearching"
       ></app-tms-sidebar-dropdown>
     </div>
   </div>

@@ -8,11 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TmsSidebarDropdownComponent implements OnInit {
   @Input() dropdownTitle: string = '';
   @Input() dropdownItems: any;
+  @Input() onSearching: boolean = false;
   dropdownVisible: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    if (this.onSearching) {
+      this.dropdownVisible = true;
+    }
+  }
 
   /**
    * Phương thức kích hoạt dropdown

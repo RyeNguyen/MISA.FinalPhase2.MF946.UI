@@ -35,25 +35,25 @@ export class TmsPopupModalTaskComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    // if (this.bindedData) {
-    //   this.taskData = JSON.parse(JSON.stringify(this.bindedData));
-    // }
-    this.taskData = JSON.parse(JSON.stringify(this.bindedData));
+    //Đóng form coi như submit luôn
+    if (!this.popupVisible && this.bindedData) {
+      this.submitTask();
+    }
 
-
+    //Autofocus vào ô nhập tên công việc mỗi khi form mở ra
     if (this.popupVisible) {
       setTimeout(() => {
         this.focusTextField.nativeElement.focus();
       }, 600)
     }
 
-    if (!this.popupVisible) {
-      this.submitTask();
+    //Nếu như dữ liệu truyền vào tồn tại thì khởi tạo một biến lưu giá trị thay đổi
+    if (this.bindedData) {
+      this.taskData = JSON.parse(JSON.stringify(this.bindedData));
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Phương thức định dạng string dạng ngày tháng
@@ -104,8 +104,9 @@ export class TmsPopupModalTaskComponent implements OnInit {
    */
   submitTask(): void {
     if (this.editMode) {
-      console.log(this.taskData)
-      this._taskService.updateTask(this.taskData['TaskId'], this.taskData).subscribe(data => console.log(data));
+      this._taskService.updateTask(this.taskData['TaskId'], this.taskData).subscribe(data => {
+        this.hidePopup();
+      })
     }
   }
 }

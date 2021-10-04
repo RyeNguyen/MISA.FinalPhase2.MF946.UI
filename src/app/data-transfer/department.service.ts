@@ -25,6 +25,16 @@ export class DepartmentService {
   }
 
   /**
+   * Phương thức call api lọc dữ liệu phòng ban và các dự án bên trong phòng ban
+   * @param searchKeyword
+   * @returns
+   * Author: NQMinh (04/10/2021)
+   */
+  getFilteredDepartments(searchKeyword: string): Observable<object[]> {
+    return this.http.get<object[]>(`${this.departmentUrl}search?searchKeyword=${searchKeyword}`);
+  }
+
+  /**
    * Phương thức call api thêm phòng ban mới vào cơ sở dữ liệu
    * @param newDepartment
    * Author: NQMinh (02/10/2021)

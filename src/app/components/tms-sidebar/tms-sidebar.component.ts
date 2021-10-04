@@ -1,8 +1,8 @@
+import { DepartmentService } from './../../data-transfer/department.service';
 import {Component, OnInit} from '@angular/core';
 
 import {iconItem} from "../../shared/interfaces/icon-item";
 import {SidebarItems} from "../../shared/models/sidebar-items";
-import {SearchDataService} from "../../data-transfer/search-data.service";
 
 @Component({
   selector: 'app-tms-sidebar',
@@ -12,14 +12,41 @@ import {SearchDataService} from "../../data-transfer/search-data.service";
 export class TmsSidebarComponent implements OnInit {
   sidebarItems: iconItem[] = [];
   searchedData: any;
+  searchKeyword: string = '';
+  onSearching: boolean = false;
 
-  constructor(private _dataService: SearchDataService) {
+  constructor(private _departmentService: DepartmentService) {
     this.sidebarItems = SidebarItems;
   }
 
   ngOnInit(): void {
-    this._dataService.getSearchData().subscribe(data => {
+    this.loadData();
+  }
+
+  /**
+   * phương thức call api lấy dữ liệu lọc cho phòng ban và dự án
+   * Author: NQMinh (04/10/2021)
+   */
+  loadData(): void {
+    this._departmentService.getFilteredDepartments(this.searchKeyword).subscribe(data => {
       this.searchedData = data;
     });
+  }
+
+  /**
+   * Phương thức thay đổi từ khóa tìm kiếm của api
+   * @param data
+   * Author: NQMinh (04/10/2021)
+   */
+  searchData(data: string): void {
+    this.searchKeyword = data;
+
+    if (this.searchKeyword === '') {
+      this.onSearching = false;
+    } else {
+      this.onSearching = true;
+    }
+
+    this.loadData();
   }
 }

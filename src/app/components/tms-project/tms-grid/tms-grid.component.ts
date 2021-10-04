@@ -1,12 +1,11 @@
-import {Component, OnInit, Input, AfterContentChecked, ChangeDetectorRef} from '@angular/core';
+import { TasksService } from './../../../data-transfer/tasks.service';
+import { Component, OnInit, Input, Output, AfterContentChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 
 import {MODAL_ENUMS} from "../../../shared/enum/modal-base";
 import {ICON_SIZES} from "../../../shared/enum/icon-size";
 import {doughnutItem} from "../../../shared/interfaces/doughnut-item";
 import {GRID_CONSTANTS} from "../../../shared/constants/grid";
 import {POPOVER_MODES} from "../../../shared/enum/popover-modes";
-
-import {TmsPopupService} from "../../../shared/services/tms-popup.service";
 
 @Component({
   selector: 'app-tms-grid',
@@ -16,6 +15,7 @@ import {TmsPopupService} from "../../../shared/services/tms-popup.service";
 export class TmsGridComponent implements OnInit, AfterContentChecked {
   @Input() gridData: any;
   @Input() taskColumns: any;
+  @Output() onReloadData: EventEmitter<any> = new EventEmitter<any>();
   gridConst: any;
   popoverModes: any;
 
@@ -23,11 +23,16 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
   popoverProgressVisible: boolean = false;
   popoverDateVisible: boolean = false;
   popoverTarget: any = '';
+  popoverValue: any;
   popupWidth: number = MODAL_ENUMS.ModalWidthLarge;
 
   selectedTask: any;
+  currentRow: number = 0;
 
-  constructor(private _popupService: TmsPopupService, private cdref: ChangeDetectorRef) {
+  constructor(
+    private cdref: ChangeDetectorRef,
+    private _taskService: TasksService
+    ) {
     this.gridConst = GRID_CONSTANTS;
     this.popoverModes = POPOVER_MODES;
   }
@@ -63,7 +68,6 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
    * Author: NQMinh (26/09/2021)
    */
   getData(data: any) {
-    //console.log(data)
     const columnIndex = data.columnIndex;
     return data.row.cells[columnIndex].text;
   }
@@ -147,12 +151,39 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
    * Author: NQMinh (26/09/2021)
    * @param popoverMode
    */
-  openPopover(e: any, popoverMode: number) {
+  openPopover(data:any, e: any, popoverMode: number) {
     this.popoverTarget = e.target;
+    this.currentRow = data.rowIndex;
     if (popoverMode === this.popoverModes['ProgressMode']) {
+      this.popoverValue = data.data['Progress'];
       this.popoverProgressVisible = true;
     } else {
+      this.popoverValue = data.data['DueDate'];
       this.popoverDateVisible = true;
     }
+  }
+
+  /**
+   * Phương thức call api cập nhật thông tin công việc
+   * @param data
+   */
+  updateTask(data: any): void {
+    const taskToUpdate = this.gridData[this.currentRow];
+    taskToUpdate['Progress'] = data.inputValue;
+
+    this.popoverProgressVisible = false;
+
+    this._taskService.updateTask(taskToUpdate['TaskId'], taskToUpdate).subscribe(data => {
+      this.reloadData();
+    })
+  }
+
+  /**
+   * Phương thức xử lý sự kiện khi dữ liệu công việc thay đổi
+   * Author: NQMinh (04/10/2021)
+   */
+  reloadData(): void {
+    this.popupVisible = false;
+    this.onReloadData.emit();
   }
 }

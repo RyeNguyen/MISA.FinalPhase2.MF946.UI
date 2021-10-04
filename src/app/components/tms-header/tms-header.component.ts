@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {HeaderFunctions} from "../../shared/models/header-functions";
 import {iconItem} from "../../shared/interfaces/icon-item";
@@ -8,6 +8,7 @@ import {HEADER_CONSTANTS} from "../../shared/constants/header";
 import {MODAL_ENUMS} from "../../shared/enum/modal-base";
 
 import {TmsPopupService} from "../../shared/services/tms-popup.service";
+import { ProjectService } from 'src/app/data-transfer/project.service';
 import {MODAL_DEPARTMENT_CONSTANTS} from "../../shared/constants/modal-department";
 import {MODAL_PROJECT_CONSTANTS} from "../../shared/constants/modal-project";
 
@@ -23,6 +24,9 @@ export class TmsHeaderComponent implements OnInit {
 
   //Text trên header
   headerVariables: any;
+
+  //Tên dự án đang hiển thị
+  headerTitle: string = '';
 
   //Các đường link trên header
   headerLinks: any;
@@ -47,11 +51,19 @@ export class TmsHeaderComponent implements OnInit {
 
   //Độ rộng của popup
   popupWidth: number = 0;
+
+  //Biến lưu dự án hiện tại
+  currentProject: any;
   //endregion
 
   @Input() headerItems: iconItem[] = [];
 
-  constructor(private _router: Router, private _popupService: TmsPopupService) {
+  constructor(
+    private _router: Router,
+    private _currentRoute: ActivatedRoute,
+    private _popupService: TmsPopupService,
+    private _projectService: ProjectService
+    ) {
     this.headerLinks = HeaderLinks;
     this.headerFunctions = HeaderFunctions;
     this.headerVariables = HEADER_CONSTANTS;
@@ -61,6 +73,16 @@ export class TmsHeaderComponent implements OnInit {
   ngOnInit(): void {
     this._popupService.popupVisible$.subscribe(popupVisible => {
       this.popupVisible = popupVisible;
+    });
+
+    //Lấy id của dự án hiện tại thông qua link
+    this._currentRoute.queryParams.subscribe(params => {
+      this.currentProject = params['ProjectID'];
+    });
+
+    //Lấy tên dự án hiện tại thông qua id vừa lấy
+    this._projectService.getById(this.currentProject).subscribe(data => {
+      this.headerTitle = data['ProjectName'];
     });
 
     this.setDefaultActive();

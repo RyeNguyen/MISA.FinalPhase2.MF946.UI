@@ -6,6 +6,8 @@
     mode="search"
     stylingMode="underlined"
     [showClearButton]="true"
+    valueChangeEvent="keyup"
+    (onValueChanged)="changeValue($event)"
   ></dx-text-box>
 
   <div class="tms-sidebar-setting"></div>
