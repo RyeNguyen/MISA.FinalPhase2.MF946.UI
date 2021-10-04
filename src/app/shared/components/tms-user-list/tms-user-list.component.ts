@@ -11,10 +11,11 @@ export class TmsUserListComponent implements OnInit {
   userList: User[] = [];
 
   constructor(private _userService: UserService) {
-    this.userList = _userService.getUsers();
   }
 
   ngOnInit(): void {
+    this._userService.getUsers().subscribe(users => {
+      this.userList = users;
+    });
   }
-
 }

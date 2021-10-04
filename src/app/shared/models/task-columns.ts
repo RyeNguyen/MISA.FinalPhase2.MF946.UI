@@ -43,7 +43,7 @@ export const TaskColumns: TaskColumn[] = [
   },
   {
     ColID: 2,
-    ColField: 'Process',
+    ColField: 'Progress',
     ColName: 'Tình trạng công việc',
     ColWidth: 376,
     ColDataType: "",
@@ -61,7 +61,7 @@ export const TaskColumns: TaskColumn[] = [
   },
   {
     ColID: 4,
-    ColField: 'EndDate',
+    ColField: 'DueDate',
     ColName: 'Hạn hoàn thành',
     ColWidth: 200,
     ColDataType: "date",

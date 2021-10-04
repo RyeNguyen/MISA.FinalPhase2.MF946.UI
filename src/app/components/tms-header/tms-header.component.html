@@ -105,14 +105,20 @@
   [modalWidth]="popupWidth"
 >
   <app-tms-popup-modal-department
+    [popupVisible]="popupVisible"
     *ngIf="currentPopupType === modalEnums['ModalTypeDepartment']"
+    (onPopupHidden)="popupVisible = false"
   ></app-tms-popup-modal-department>
 
   <app-tms-popup-modal-project
+    [popupVisible]="popupVisible"
     *ngIf="currentPopupType === modalEnums['ModalTypeProject']"
+    (onPopupHidden)="popupVisible = false"
   ></app-tms-popup-modal-project>
 
   <app-tms-popup-modal-task
+    [popupVisible]="popupVisible"
     *ngIf="currentPopupType === modalEnums['ModalTypeTask']"
+    (onPopupHidden)="popupVisible = false"
   ></app-tms-popup-modal-task>
 </app-tms-popup-modal>

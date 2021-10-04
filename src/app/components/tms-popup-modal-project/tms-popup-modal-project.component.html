@@ -1,35 +1,48 @@
 <div class="tms-modal__project">
   <app-tms-text-field
+    #focusInput
+    inputName="ProjectName"
     [inputLabel]="modalProjectVariables['ModalFieldNameLabel']"
     [inputPlaceholder]="modalProjectVariables['ModalFieldNamePlaceholder']"
     [isRequired]="true"
+    (onTyping)="bindData($event)"
   ></app-tms-text-field>
 
   <div class="tms-text-field__group">
     <app-tms-select-box
+      selectBoxName="DepartmentId"
       [selectBoxLabel]="modalProjectVariables['ModalFieldDepartmentLabel']"
       [inputPlaceholder]="modalProjectVariables['ModalFieldDepartmentPlaceholder']"
       [selectBoxData]="departmentOptions"
+      selectBoxValueExpression="DepartmentId"
+      selectBoxDisplayExpression="DepartmentName"
       [ngStyle]="{width: '50%'}"
+      (onSelected)="bindData($event)"
     ></app-tms-select-box>
 
     <app-tms-date-box
+      dateBoxName="StartDate"
       [dateBoxLabel]="modalProjectVariables['ModalFieldFromDateLabel']"
       [inputPlaceholder]="modalProjectVariables['ModalFieldFromDatePlaceholder']"
       [ngStyle]="{width: '25%'}"
+      (onValueChanged)="bindData($event)"
     ></app-tms-date-box>
 
     <app-tms-date-box
+      dateBoxName="EndDate"
       [dateBoxLabel]="modalProjectVariables['ModalFieldToDateLabel']"
       [inputPlaceholder]="modalProjectVariables['ModalFieldToDatePlaceholder']"
       [ngStyle]="{width: '25%'}"
+      (onValueChanged)="bindData($event)"
     ></app-tms-date-box>
   </div>
 
   <app-tms-text-area
-  [inputLabel]="modalProjectVariables['ModalFieldDescriptionLabel']"
-  [inputPlaceholder]="modalProjectVariables['ModalFieldDescriptionPlaceholder']"
-  inputHeight="78px"
+    inputName="Description"
+    [inputLabel]="modalProjectVariables['ModalFieldDescriptionLabel']"
+    [inputPlaceholder]="modalProjectVariables['ModalFieldDescriptionPlaceholder']"
+    inputHeight="78px"
+    (onTyping)="bindData($event)"
   ></app-tms-text-area>
 
   <app-tms-text-field
@@ -41,7 +54,10 @@
 
   <app-tms-user-list></app-tms-user-list>
 
-  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+  <app-tms-popup-modal-footer
+    (onPopupHidden)="hidePopup()"
+    (onModalSubmitted)="addProject()"
+  ></app-tms-popup-modal-footer>
 </div>
 
 <app-tms-popup-modal
@@ -50,6 +66,8 @@
   [modalTitle]="popupTitle"
   [modalWidth]="popupWidth"
 >
-  <app-tms-popup-modal-member></app-tms-popup-modal-member>
+  <app-tms-popup-modal-member
+    (onPopupHidden)="innerVisible = false"
+  ></app-tms-popup-modal-member>
 </app-tms-popup-modal>
 

@@ -11,5 +11,7 @@
     [placeholder]="inputPlaceholder"
     width="100%"
     [height]="inputHeight"
+    valueChangeEvent="keyup"
+    (onValueChanged)="changeValue($event)"
   ></dx-text-area>
 </div>

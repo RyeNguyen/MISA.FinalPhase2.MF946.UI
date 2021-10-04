@@ -24,6 +24,7 @@
     &-btn {
       @include background-template;
       @include icon-size-default;
+      cursor: pointer;
 
       &.minus {
         background-image: url('../../../../assets/icons/tms-icon-minus.svg');

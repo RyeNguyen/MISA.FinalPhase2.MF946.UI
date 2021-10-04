@@ -27,7 +27,7 @@
     [dataSource]="gridData"
     width="calc(100% - 80px)"
     height="calc(100% - 48px)"
-    keyExpr="TaskID"
+    keyExpr="TaskId"
     [allowColumnResizing]="true"
     [showBorders]="false"
     [showRowLines]="true"
@@ -148,5 +148,6 @@
   <app-tms-popup-modal-task
     [editMode]="true"
     [bindedData]="selectedTask"
+    [popupVisible]="popupVisible"
   ></app-tms-popup-modal-task>
 </app-tms-popup-modal>

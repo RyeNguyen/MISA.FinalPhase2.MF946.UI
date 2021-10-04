@@ -9,7 +9,7 @@
       class="tms-modal__progress-btn--right"
       (click)="openPopover($event, popoverModes['ProgressMode'])"
     >
-      {{ taskData['Process'] }}%
+      {{ taskData['Progress'] }}%
       <div class="tms-modal__progress-btn-icon"></div>
     </div>
   </div>
@@ -37,9 +37,11 @@
       <!-- Input nhập tên công việc -->
       <div class="tms-modal__task-input">
         <input
+          #focusInput
           type="text"
           [placeholder]="modalConst['InputPlaceholder']"
-          [(ngModel)]="taskData['TaskName']">
+          [(ngModel)]="taskData['TaskName']"
+        >
       </div>
 
       <!-- Mục người giao việc, chỉ xuất hiện ở modal sửa -->
@@ -64,12 +66,12 @@
       <div class="tms-modal__task-selector">
         <div class="tms-modal__task-selector--half">
           <div class="tms-modal__task-selector-icon assignee"></div>
-          <div class="tms-modal__task-selector-text" *ngIf="!taskData['AssigneeName']">
+          <div class="tms-modal__task-selector-text" *ngIf="!taskData['AssigneeId']">
             {{ modalConst['WidgetAssigneeSelector'] }}
           </div>
-          <div class="tms-modal__task-selector-text" *ngIf="taskData['AssigneeName']">
+          <div class="tms-modal__task-selector-text" *ngIf="taskData['AssigneeId']">
             <div>{{ modalConst['WidgetAssigneeLabel'] }}</div>
-            <strong>{{ taskData['AssigneeName'] }}</strong>
+            <strong>{{ taskData['AssigneeId'] }}</strong>
           </div>
         </div>
 
@@ -78,12 +80,12 @@
           (click)="openPopover($event, popoverModes['CalendarMode'])"
         >
           <div class="tms-modal__task-selector-icon date"></div>
-          <div class="tms-modal__task-selector-text" *ngIf="!taskData['EndDate']">
+          <div class="tms-modal__task-selector-text" *ngIf="!taskData['DueDate']">
             {{ modalConst['WidgetDateSelector'] }}
           </div>
-          <div class="tms-modal__task-selector-text" *ngIf="taskData['EndDate']">
+          <div class="tms-modal__task-selector-text" *ngIf="taskData['DueDate']">
             <div>{{ modalConst['WidgetDateLabel'] }}</div>
-            <strong>{{ formatDate(taskData['EndDate']) }}</strong>
+            <strong>{{ formatDate(taskData['DueDate']) }}</strong>
           </div>
         </div>
       </div>
@@ -103,14 +105,20 @@
     </div>
   </div>
 
-  <app-tms-popup-modal-footer *ngIf="!editMode"></app-tms-popup-modal-footer>
+  <app-tms-popup-modal-footer
+    *ngIf="!editMode"
+    (onPopupHidden)="hidePopup()"
+    (onModalSubmitted)="submitTask()"
+  ></app-tms-popup-modal-footer>
 </div>
 
 <!-- Popover cập nhật tiến độ -->
 <app-tms-popover-progress
   [popoverTarget]="popoverTarget"
   [popoverVisible]="popoverProgressVisible"
+  [popoverValue]="taskData['Progress']"
   (onPopoverHidden)="popoverProgressVisible = false"
+  (onPopoverSubmitted)="bindData($event)"
 ></app-tms-popover-progress>
 
 <!-- Popover cập nhật hạn hoàn thành -->

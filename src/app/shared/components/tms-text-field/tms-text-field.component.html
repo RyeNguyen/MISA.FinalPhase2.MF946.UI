@@ -1,24 +1,19 @@
-<div
-  class="tms-text-field"
->
-  <div
-    class="tms-text-field__label"
-  >
+<div class="tms-text-field">
+  <div class="tms-text-field__label">
     {{ inputLabel }}
-    <span
-      *ngIf="isRequired"
-      class="tms-asterisk"
-    >
-      *
-    </span>
+    <span *ngIf="isRequired" class="tms-asterisk">*</span>
   </div>
 
   <dx-text-box
+    #focusInput
     [class]="bonusClass"
     [placeholder]="inputPlaceholder"
     width="100%"
     [mode]="inputMode"
     [height]="textFieldHeight"
+    [value]="inputValue"
+    valueChangeEvent="keyup"
+    (onValueChanged)="changeValue($event)"
   >
     <dxi-button
       *ngIf="bonusButton"

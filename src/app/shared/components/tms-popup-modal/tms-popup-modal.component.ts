@@ -1,19 +1,17 @@
 import {MODAL_ENUMS} from '../../enum/modal-base';
 import {MODAL_CONSTANTS} from '../../constants/modal-base';
-import {Component, OnDestroy, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 import {TmsPopupService} from "../../services/tms-popup.service";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-tms-popup-modal',
   templateUrl: './tms-popup-modal.component.html',
   styleUrls: ['./tms-popup-modal.component.scss']
 })
-export class TmsPopupModalComponent implements OnInit, OnDestroy {
+export class TmsPopupModalComponent implements OnInit {
   modalVariables: any;
   modalEnums: any;
-  private subscription: Subscription | undefined;
 
   //region Props
   @Input() popupVisible: boolean = false;
@@ -35,10 +33,5 @@ export class TmsPopupModalComponent implements OnInit, OnDestroy {
    */
   hidePopup() {
     this.onPopupHidden.emit();
-  }
-
-  ngOnDestroy(): void {
-    // @ts-ignore
-    //this.subscription.unsubscribe();
   }
 }

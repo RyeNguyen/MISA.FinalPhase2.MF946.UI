@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { iconItem } from "../../shared/interfaces/icon-item";
-import { SidebarItems } from "../../shared/models/sidebar-items";
-import {MockDataService} from "../../data-transfer/mock-data.service";
+import {iconItem} from "../../shared/interfaces/icon-item";
+import {SidebarItems} from "../../shared/models/sidebar-items";
+import {SearchDataService} from "../../data-transfer/search-data.service";
 
 @Component({
   selector: 'app-tms-sidebar',
@@ -13,12 +13,13 @@ export class TmsSidebarComponent implements OnInit {
   sidebarItems: iconItem[] = [];
   searchedData: any;
 
-  constructor(private _dataService: MockDataService) {
+  constructor(private _dataService: SearchDataService) {
     this.sidebarItems = SidebarItems;
-    this.searchedData = _dataService.getSearchData();
   }
 
   ngOnInit(): void {
+    this._dataService.getSearchData().subscribe(data => {
+      this.searchedData = data;
+    });
   }
-
 }

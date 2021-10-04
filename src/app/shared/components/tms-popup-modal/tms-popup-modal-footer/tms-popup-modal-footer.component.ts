@@ -1,7 +1,5 @@
 import {MODAL_CONSTANTS} from '../../../constants/modal-base';
-import {Component, OnInit} from '@angular/core';
-
-import {TmsPopupService} from "../../../services/tms-popup.service";
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-tms-popup-modal-footer',
@@ -9,9 +7,11 @@ import {TmsPopupService} from "../../../services/tms-popup.service";
   styleUrls: ['./tms-popup-modal-footer.component.scss']
 })
 export class TmsPopupModalFooterComponent implements OnInit {
-  modalVariables;
+  modalVariables: any;
+  @Output() onPopupHidden: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onModalSubmitted: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private _popupService: TmsPopupService) {
+  constructor() {
     this.modalVariables = MODAL_CONSTANTS;
   }
 
@@ -19,15 +19,19 @@ export class TmsPopupModalFooterComponent implements OnInit {
   }
 
   /**
-   * Phương thức call service để đóng popup
+   * Phương thức đóng popup
    * Author: NQMinh (23/09/2021)
+   * Modified: NQMinh (03/10/2021)
    */
-  hidePopup() {
-    const popupVisible = false;
+  hidePopup(): void {
+    this.onPopupHidden.emit();
+  }
 
-    //Khi đóng modal thì không quan tâm loại modal gì nên đặt bằng undefined
-    const popupMode = undefined;
-
-    this._popupService.setPopupMode(popupMode, popupVisible);
+  /**
+   * Phương thức xử lý sự kiện khi nhấn nút Lưu
+   * Author: NQMinh (03/10/2021)
+   */
+  submitModal(): void {
+    this.onModalSubmitted.emit();
   }
 }

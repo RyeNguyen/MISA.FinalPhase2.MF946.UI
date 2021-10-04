@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {HeaderFunctions} from "../../shared/models/header-functions";
@@ -8,7 +8,6 @@ import {HEADER_CONSTANTS} from "../../shared/constants/header";
 import {MODAL_ENUMS} from "../../shared/enum/modal-base";
 
 import {TmsPopupService} from "../../shared/services/tms-popup.service";
-import {MODAL_CONSTANTS} from "../../shared/constants/modal-base";
 import {MODAL_DEPARTMENT_CONSTANTS} from "../../shared/constants/modal-department";
 import {MODAL_PROJECT_CONSTANTS} from "../../shared/constants/modal-project";
 
@@ -83,6 +82,7 @@ export class TmsHeaderComponent implements OnInit {
     this.popupVisible = true;
     this.currentPopupType = MODAL_ENUMS.ModalTypeTask;
     this.popupWidth = MODAL_ENUMS.ModalWidthLarge;
+    this.popupTitle = '';
   }
 
   /**
@@ -99,8 +99,7 @@ export class TmsHeaderComponent implements OnInit {
     if (this.currentPopupType === MODAL_ENUMS.ModalTypeDepartment) {
       this.popupTitle = MODAL_DEPARTMENT_CONSTANTS.ModalTitle;
       this.popupWidth = MODAL_ENUMS.ModalWidthMedium;
-    }
-    else if (this.currentPopupType === MODAL_ENUMS.ModalTypeProject) {
+    } else if (this.currentPopupType === MODAL_ENUMS.ModalTypeProject) {
       this.popupTitle = MODAL_PROJECT_CONSTANTS.ModalTitle;
       this.popupWidth = MODAL_ENUMS.ModalWidthBig;
     }

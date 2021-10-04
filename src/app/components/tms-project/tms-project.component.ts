@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {HeaderItemsDark} from "../../shared/models/header-items-dark";
 
-import {MockDataService} from "../../data-transfer/mock-data.service";
+import {TasksService} from "../../data-transfer/tasks.service";
+
 import {iconItem} from "../../shared/interfaces/icon-item";
 import {TaskColumns} from "../../shared/models/task-columns";
 import {PROJECT_PAGES} from "../../shared/enum/project-pages";
@@ -18,15 +19,21 @@ export class TmsProjectComponent implements OnInit {
   headerItems: iconItem[] = [];
   taskColumns: any;
   projectPages: any;
+  currentProject: any;
 
-  constructor(public router: Router, private service: MockDataService) {
-    this.tasksData = this.service.getCustomers();
+  constructor(public router: Router, private _currentRoute: ActivatedRoute, private _taskService: TasksService) {
     this.headerItems = HeaderItemsDark;
     this.taskColumns = TaskColumns;
     this.projectPages = PROJECT_PAGES;
   }
 
   ngOnInit(): void {
+    this._currentRoute.queryParams.subscribe(params => {
+      this.currentProject = params['ProjectID'];
+    })
+    this._taskService.getTasksByProject(this.currentProject).subscribe(data => {
+      this.tasksData = data;
+    })
   }
 
 }

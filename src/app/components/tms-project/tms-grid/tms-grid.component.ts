@@ -75,6 +75,11 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
    */
   getDataStatus(data: any) {
     const columnIndex = data.columnIndex;
+
+    if (!data.row.cells[columnIndex].text) {
+      return this.gridConst.TaskStatusUnfinished;
+    }
+
     const cellValue = parseInt(data.row.cells[columnIndex].text);
     if (cellValue >= 100) {
       return this.gridConst.TaskStatusFinishing;
@@ -126,7 +131,7 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
     doughnutData = [
       {
         region: 'finishedTask',
-        val: data.value
+        val: data.value ? data.value: 0
       },
       {
         region: 'unfinishedTask',

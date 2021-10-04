@@ -1,9 +1,7 @@
 <div
   class="tms-select-box"
 >
-  <div
-    class="tms-select-box__label"
-  >
+  <div class="tms-select-box__label">
     {{ selectBoxLabel }}
   </div>
 
@@ -13,7 +11,8 @@
     [height]="inputHeight"
     [searchEnabled]="true"
     [dataSource]="selectBoxData"
-    displayExpr="itemName"
-    valueExpr="itemId"
+    [displayExpr]="selectBoxDisplayExpression"
+    [valueExpr]="selectBoxValueExpression"
+    (onValueChanged)="changeValue($event)"
   ></dx-select-box>
 </div>

@@ -1,8 +1,11 @@
 <div class="tms-modal__department">
   <app-tms-text-field
+    #focusInput
+    inputName="DepartmentName"
     [inputLabel]="modalDepartmentVariables['ModalFieldNameLabel']"
     [inputPlaceholder]="modalDepartmentVariables['ModalFieldNamePlaceholder']"
     [isRequired]="true"
+    (onTyping)="bindData($event)"
   ></app-tms-text-field>
 
   <app-tms-text-field
@@ -14,7 +17,10 @@
 
   <app-tms-user-list></app-tms-user-list>
 
-  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+  <app-tms-popup-modal-footer
+    (onPopupHidden)="hidePopup()"
+    (onModalSubmitted)="addDepartment()"
+  ></app-tms-popup-modal-footer>
 </div>
 
 <app-tms-popup-modal
@@ -23,5 +29,7 @@
   [modalTitle]="popupTitle"
   [modalWidth]="popupWidth"
 >
-  <app-tms-popup-modal-member></app-tms-popup-modal-member>
+  <app-tms-popup-modal-member
+    (onPopupHidden)="innerVisible = false"
+  ></app-tms-popup-modal-member>
 </app-tms-popup-modal>

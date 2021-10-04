@@ -21,7 +21,7 @@
   <!-- Danh sách nhân viên dạng bảng -->
   <dx-data-grid
     [dataSource]="gridData"
-    keyExpr="UserID"
+    keyExpr="UserId"
     height="273"
     [allowColumnResizing]="false"
     [showBorders]="false"
@@ -39,7 +39,7 @@
       mode="virtual"
     ></dxo-scrolling>
 
-    <!--<dxo-selection mode="multiple"></dxo-selection>-->
+    <dxo-selection mode="multiple"></dxo-selection>
 
     <dxi-column
       *ngFor="let column of gridColumns"
@@ -51,5 +51,7 @@
   </dx-data-grid>
 
   <!-- Footer của modal -->
-  <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
+  <app-tms-popup-modal-footer
+    (onPopupHidden)="hidePopup()"
+  ></app-tms-popup-modal-footer>
 </div>

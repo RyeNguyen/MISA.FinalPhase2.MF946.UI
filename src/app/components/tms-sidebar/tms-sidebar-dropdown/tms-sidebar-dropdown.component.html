@@ -16,10 +16,11 @@
       class="tms-sidebar__dropdown-item"
       *ngFor="let item of dropdownItems"
       [routerLink]="['/project']"
-      [queryParams]="{Type: 1, ProjectID: item['ProjectID'], DepartmentID: item['DepartmentID']}"
+      [queryParams]="{Type: 1, ProjectID: item['ProjectId'], DepartmentID: item['DepartmentId']}"
       queryParamsHandling="merge"
+      [title]="item['ProjectName']"
     >
-      {{ item['ProjectName'] }}
+      <div>{{ item['ProjectName'] }}</div>
     </div>
   </div>
 </div>

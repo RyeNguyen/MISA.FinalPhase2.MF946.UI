@@ -9,7 +9,10 @@
     <div class="tms-progress__title">Tiến độ công việc</div>
 
     <div class="tms-progress__slider-bar">
-      <div class="tms-progress__slider-btn minus"></div>
+      <div
+        class="tms-progress__slider-btn minus"
+        (click)="minusFromValue()"
+      ></div>
 
       <dx-slider
         class="tms-progress__slider"
@@ -17,9 +20,14 @@
         [max]="100"
         width="100%"
         height="28px"
+        [value]="progressValue"
+        (onValueChanged)="changeValueBySlider($event)"
       ></dx-slider>
 
-      <div class="tms-progress__slider-btn plus"></div>
+      <div
+        class="tms-progress__slider-btn plus"
+        (click)="addToValue()"
+      ></div>
     </div>
 
     <div class="tms-progress__steps">
@@ -32,11 +40,19 @@
 
     <div class="tms-progress__input-field">
       Nhập tiến độ
-      <app-tms-text-field [ngStyle]="{width: '78px'}"></app-tms-text-field>
+      <app-tms-text-field
+        #focusInput
+        [ngStyle]="{width: '78px'}"
+        [inputValue]="progressValue"
+        (onTyping)="changeValueByInput($event)"
+      ></app-tms-text-field>
     </div>
 
     <div class="tms-progress__footer">
-      <app-tms-button buttonText="Xác nhận"></app-tms-button>
+      <app-tms-button
+        buttonText="Xác nhận"
+        (click)="submitProgress()"
+      ></app-tms-button>
     </div>
   </div>
 </dx-popover>

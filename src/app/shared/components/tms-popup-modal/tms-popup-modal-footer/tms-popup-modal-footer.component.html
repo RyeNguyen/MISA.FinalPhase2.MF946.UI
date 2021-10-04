@@ -6,6 +6,9 @@
     {{ modalVariables['ButtonTextCancel'] }}
   </div>
 
-  <app-tms-button [buttonText]="modalVariables['ButtonTextConfirm']">
+  <app-tms-button
+    [buttonText]="modalVariables['ButtonTextConfirm']"
+    (click)="submitModal()"
+  >
   </app-tms-button>
 </div>

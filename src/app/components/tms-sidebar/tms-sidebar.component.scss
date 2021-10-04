@@ -52,4 +52,9 @@
       @include icon-size-default;
     }
   }
+
+  &__department {
+    height: calc(100vh - 248px);
+    overflow: auto;
+  }
 }
