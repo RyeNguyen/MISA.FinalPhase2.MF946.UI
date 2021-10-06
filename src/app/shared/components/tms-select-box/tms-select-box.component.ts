@@ -10,6 +10,7 @@ export class TmsSelectBoxComponent implements OnInit {
   @Input() selectBoxLabel: string = '';
   @Input() inputPlaceholder: string = '';
   @Input() inputHeight: string = '40px';
+  @Input() isRequired: boolean = false;
   @Input() selectBoxData?: any;
   @Input() selectBoxValueExpression: string = '';
   @Input() selectBoxDisplayExpression: string = '';

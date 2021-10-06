@@ -30,8 +30,8 @@ export class DepartmentService {
    * @returns
    * Author: NQMinh (04/10/2021)
    */
-  getFilteredDepartments(searchKeyword: string): Observable<object[]> {
-    return this.http.get<object[]>(`${this.departmentUrl}search?searchKeyword=${searchKeyword}`);
+  getFilteredDepartments(userId: string, searchKeyword: string): Observable<object[]> {
+    return this.http.get<object[]>(`${this.departmentUrl}search?userId=${userId}&searchKeyword=${searchKeyword}`);
   }
 
   /**

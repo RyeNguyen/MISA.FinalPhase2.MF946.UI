@@ -14,6 +14,7 @@ import {POPOVER_MODES} from "../../../shared/enum/popover-modes";
 })
 export class TmsGridComponent implements OnInit, AfterContentChecked {
   @Input() gridData: any;
+  @Input() userList: any;
   @Input() taskColumns: any;
   @Output() onReloadData: EventEmitter<any> = new EventEmitter<any>();
   gridConst: any;
@@ -22,6 +23,7 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
   popupVisible: boolean = false;
   popoverProgressVisible: boolean = false;
   popoverDateVisible: boolean = false;
+  popoverMemberVisible: boolean = false;
   popoverTarget: any = '';
   popoverValue: any;
   popupWidth: number = MODAL_ENUMS.ModalWidthLarge;
@@ -157,9 +159,12 @@ export class TmsGridComponent implements OnInit, AfterContentChecked {
     if (popoverMode === this.popoverModes['ProgressMode']) {
       this.popoverValue = data.data['Progress'];
       this.popoverProgressVisible = true;
-    } else {
+    } else if (popoverMode === this.popoverModes['CalendarMode']) {
       this.popoverValue = data.data['DueDate'];
       this.popoverDateVisible = true;
+    } else {
+      this.popoverValue = data.data['AssigneeId'];
+      this.popoverMemberVisible = true;
     }
   }
 

@@ -1,24 +1,24 @@
 <div class="tms-grid">
-  <!-- Thanh công cụ của bảng -->
+  <!-- Thanh công cụ của bảng, chưa phát triển -->
   <div class="tms-grid__widget">
     <div class="tms-grid__widget-item">
       <div class="tms-grid__widget-icon filter"></div>
-      <div class="tms-grid__widget-text">{{ gridConst['WidgetFilter'] }}</div>
+      <div class="tms-grid__widget-text">{{ gridConst["WidgetFilter"] }}</div>
     </div>
 
     <div class="tms-grid__widget-item">
       <div class="tms-grid__widget-icon status"></div>
-      <div class="tms-grid__widget-text">{{ gridConst['WidgetStatus'] }}</div>
+      <div class="tms-grid__widget-text">{{ gridConst["WidgetStatus"] }}</div>
     </div>
 
     <div class="tms-grid__widget-item">
       <div class="tms-grid__widget-icon sort"></div>
-      <div class="tms-grid__widget-text">{{ gridConst['WidgetSort'] }}</div>
+      <div class="tms-grid__widget-text">{{ gridConst["WidgetSort"] }}</div>
     </div>
 
     <div class="tms-grid__widget-item">
       <div class="tms-grid__widget-icon select"></div>
-      <div class="tms-grid__widget-text">{{ gridConst['WidgetSelector'] }}</div>
+      <div class="tms-grid__widget-text">{{ gridConst["WidgetSelector"] }}</div>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
     ></dxi-column>
 
     <dxi-column
-      *ngFor="let column of taskColumns; trackBy:getColumnId"
+      *ngFor="let column of taskColumns; trackBy: getColumnId"
       alignment="left"
       [caption]="column['ColName']"
       [dataField]="column['ColField']"
@@ -64,7 +64,7 @@
       [cellTemplate]="column['CellTemplate']"
     ></dxi-column>
 
-    <!-- Ô header có chức năng lọc cột -->
+    <!-- Ô header có chức năng lọc cột, chưa phát triển -->
     <div *dxTemplate="let data of 'headerTemplate'">
       <div class="tms-grid__icon add-col"></div>
     </div>
@@ -90,14 +90,11 @@
     <!-- Những ô hiển thị dữ liệu có biểu đồ donut -->
     <div
       *dxTemplate="let data of 'donutChartCellTemplate'"
-      [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
+      [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '8px' }"
       (click)="openPopover(data, $event, popoverModes['ProgressMode'])"
     >
       <!-- Nếu công việc đã hoàn thành thì chỉ hiển thị dấu check -->
-      <div
-      *ngIf="checkFinished(data)"
-      class="tms-grid__icon success"
-    ></div>
+      <div *ngIf="checkFinished(data)" class="tms-grid__icon success"></div>
 
       <!-- Nếu công việc chưa hoàn thành thì chỉ hiển thị biểu đồ donut -->
       <app-tms-chart-doughnut
@@ -111,12 +108,20 @@
     <!-- Những ô hiển thị dữ liệu dạng ngày tháng -->
     <div
       *dxTemplate="let data of 'dateCellTemplate'"
-      [ngStyle]="{display: 'flex', alignItems: 'center', gap: '8px'}"
+      [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '8px' }"
       (click)="openPopover(data, $event, popoverModes['CalendarMode'])"
     >
-      <div
-        class="tms-grid__icon date"
-      ></div>
+      <div class="tms-grid__icon date"></div>
+      {{ getData(data) }}
+    </div>
+
+    <!-- Những ô hiển thị dữ liệu thành viên -->
+    <div
+      *dxTemplate="let data of 'userCellTemplate'"
+      [ngStyle]="{ display: 'flex', alignItems: 'center', gap: '8px' }"
+      (click)="openPopover(data, $event, popoverModes['MemberMode'])"
+    >
+      <div class="tms-grid__icon avatar"></div>
       {{ getData(data) }}
     </div>
   </dx-data-grid>
@@ -125,7 +130,7 @@
   <app-tms-grid-sidebar></app-tms-grid-sidebar>
 </div>
 
-<!-- popover cập nhật tiến độ/ngày bắt đầu/hạn hoàn thành -->
+<!-- popover cập nhật tiến độ/ngày bắt đầu/hạn hoàn thành/thành viên -->
 <app-tms-popover-progress
   [popoverTarget]="popoverTarget"
   [popoverVisible]="popoverProgressVisible"
@@ -139,6 +144,13 @@
   [popoverVisible]="popoverDateVisible"
   (onPopoverHidden)="popoverDateVisible = false"
 ></app-tms-popover-date>
+
+<app-tms-popover-user
+  [userList]="userList"
+  [popoverTarget]="popoverTarget"
+    [popoverVisible]="popoverMemberVisible"
+  (onPopoverHidden)="popoverMemberVisible = false"
+></app-tms-popover-user>
 
 <!-- Popup modal công việc -->
 <app-tms-popup-modal

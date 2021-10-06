@@ -2,19 +2,16 @@
   <!-- Các công cụ lọc dữ liệu bảng -->
   <div class="tms-modal__member-filter">
     <app-tms-text-field
+      #focusInput
       [ngStyle]="{width: '60%'}"
       inputMode="search"
       [inputPlaceholder]="modalConst['ModalFieldSearchPlaceholder']"
     ></app-tms-text-field>
-
-    <app-tms-text-field
-      [ngStyle]="{width: '40%'}"
-    ></app-tms-text-field>
   </div>
 
   <!-- Thông tin số lượng chọn -->
-  <div class="tms-modal__member-selection">
-    <div>0 {{ modalConst['SelectingMember'] }}</div>
+  <div class="tms-modal__member-selection" *ngIf="selectedMembers.length > 0">
+    <div>{{ selectedMembers.length }} {{ modalConst['SelectingMember'] }}</div>
     <div>{{ modalConst['SelectionUndo'] }}</div>
   </div>
 
@@ -29,6 +26,8 @@
     [showColumnLines]="false"
     [hoverStateEnabled]="true"
     [rowAlternationEnabled]="true"
+    [(selectedRowKeys)]="selectedMemberIds"
+    (onSelectionChanged)="selectionChangedHandler($event)"
   >
     <dxo-sorting mode="none"></dxo-sorting>
 
@@ -39,7 +38,10 @@
       mode="virtual"
     ></dxo-scrolling>
 
-    <dxo-selection mode="multiple"></dxo-selection>
+    <dxo-selection
+  showCheckBoxesMode="always"
+    mode="multiple"
+    ></dxo-selection>
 
     <dxi-column
       *ngFor="let column of gridColumns"
@@ -53,5 +55,6 @@
   <!-- Footer của modal -->
   <app-tms-popup-modal-footer
     (onPopupHidden)="hidePopup()"
+    (onModalSubmitted)="submitMembers()"
   ></app-tms-popup-modal-footer>
 </div>

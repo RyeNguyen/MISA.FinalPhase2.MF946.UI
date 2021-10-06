@@ -7,6 +7,7 @@ import {MODAL_ENUMS} from "../../shared/enum/modal-base";
 import {TmsTextFieldComponent} from "../../shared/components/tms-text-field/tms-text-field.component";
 import {Department} from "../../shared/models/department";
 import {DepartmentService} from "../../data-transfer/department.service";
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-tms-popup-modal-department',
@@ -22,6 +23,7 @@ export class TmsPopupModalDepartmentComponent implements OnInit {
   popupWidth: number = MODAL_ENUMS.ModalWidthHuge;
 
   departmentData: Department = new Department();
+  memberList: User[] = [];
 
   @Input() popupVisible: boolean = false;
   @Output() onPopupHidden: EventEmitter<any> = new EventEmitter<any>();
@@ -74,6 +76,15 @@ export class TmsPopupModalDepartmentComponent implements OnInit {
   bindData(data: any) {
     // @ts-ignore
     this.departmentData[data.inputName] = data.inputValue;
+  }
+
+  /**
+   * Phương thức lưu thông tin thành viên vào list
+   * Author: NQMinh (06/10/2021)
+   */
+  renderMembersInfo(data: User[]): void {
+    this.innerVisible = false;
+    this.memberList = data;
   }
 
   /**

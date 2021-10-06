@@ -8,11 +8,15 @@
   <div class="tms-calendar__container">
     <div class="tms-calendar__header">
       Hạn hoàn thành
-      <app-tms-text-field [ngStyle]="{width: '50%'}"></app-tms-text-field>
+      <app-tms-text-field
+        #focusInput
+        [ngStyle]="{ width: '50%' }"
+      ></app-tms-text-field>
     </div>
-    <dx-calendar width="100%"></dx-calendar>
-    <div class="tms-calendar__footer">
-      <app-tms-button buttonText="Lưu"></app-tms-button>
-    </div>
+    <dx-calendar
+      width="100%"
+      (onValueChanged)="changeValue($event)"
+    ></dx-calendar>
+    <app-tms-popup-modal-footer></app-tms-popup-modal-footer>
   </div>
 </dx-popover>

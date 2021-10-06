@@ -3,6 +3,7 @@
 >
   <div class="tms-select-box__label">
     {{ selectBoxLabel }}
+    <span *ngIf="isRequired" class="tms-asterisk">*</span>
   </div>
 
   <dx-select-box

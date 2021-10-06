@@ -1,1 +1,17 @@
-<p>tms-popover-user works!</p>
+<dx-popover
+  [target]="popoverTarget"
+  position="bottom"
+  [width]="305"
+  [visible]="popoverVisible"
+  (onHidden)="hidePopover()"
+>
+  <div class="tms-user-list__container">
+    <div class="tms-user-list__header">
+      Chọn người thực hiện
+      <app-tms-text-field
+        #focusInput
+        [ngStyle]="{ width: '100%' }"
+      ></app-tms-text-field>
+    </div>
+  </div>
+</dx-popover>

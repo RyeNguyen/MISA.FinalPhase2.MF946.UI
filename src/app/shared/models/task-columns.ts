@@ -79,11 +79,11 @@ export const TaskColumns: TaskColumn[] = [
   },
   {
     ColID: 6,
-    ColField: 'AssigneeName',
+    ColField: 'AssigneeId',
     ColName: 'Người thực hiện',
     ColWidth: 200,
     ColDataType: "",
     ColFormat: "",
-    CellTemplate: "normalCellTemplate"
+    CellTemplate: "userCellTemplate"
   }
 ];

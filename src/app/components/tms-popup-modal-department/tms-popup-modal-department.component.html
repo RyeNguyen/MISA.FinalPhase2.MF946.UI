@@ -15,7 +15,9 @@
     [bonusButton]="selectMemberButton"
   ></app-tms-text-field>
 
-  <app-tms-user-list></app-tms-user-list>
+  <app-tms-user-list
+    [userList]="memberList"
+  ></app-tms-user-list>
 
   <app-tms-popup-modal-footer
     (onPopupHidden)="hidePopup()"
@@ -30,6 +32,8 @@
   [modalWidth]="popupWidth"
 >
   <app-tms-popup-modal-member
+    [popupVisible]="innerVisible"
     (onPopupHidden)="innerVisible = false"
+    (onModalSubmitted)="renderMembersInfo($event)"
   ></app-tms-popup-modal-member>
 </app-tms-popup-modal>

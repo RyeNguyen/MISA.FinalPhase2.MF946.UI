@@ -1,3 +1,4 @@
+import { TmsPopupModalFooterModule } from './../tms-popup-modal/tms-popup-modal-footer/tms-popup-modal-footer.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +15,8 @@ import {DxPopoverModule, DxCalendarModule} from "devextreme-angular";
     DxPopoverModule,
     DxCalendarModule,
     TmsTextFieldModule,
-    TmsButtonModule
+    TmsButtonModule,
+    TmsPopupModalFooterModule
   ],
 })
 export class TmsPopoverDateModule {}

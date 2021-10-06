@@ -136,12 +136,14 @@
 //endregion
 
 //region List
-.dx-list .dx-empty-message, .dx-list-item-content {
+.dx-list .dx-empty-message,
+.dx-list-item-content {
   height: 40px;
   padding: 0 12px;
 }
 
-.dx-list .dx-empty-message, .dx-list-item {
+.dx-list .dx-empty-message,
+.dx-list-item {
   border-top: none;
   font-family: "GoogleSans-Light", sans-serif;
   font-size: 14px;
@@ -192,7 +194,8 @@
   box-sizing: border-box;
 }
 
-.dx-datagrid-content .dx-datagrid-table .dx-row > td:first-child, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td:first-child {
+.dx-datagrid-content .dx-datagrid-table .dx-row > td:first-child,
+.dx-datagrid-content .dx-datagrid-table .dx-row > tr > td:first-child {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -211,6 +214,20 @@
   @include table-row-shadow;
   background-color: $tms-color-blue-light;
   cursor: pointer;
+}
+
+  .dx-datagrid-rowsview.dx-datagrid-nowrap
+  .dx-command-select {
+  width: 40px !important;
+  min-width: 40px !important;
+  border: none;
+}
+
+.tms-modal__member .dx-checkbox-container .dx-checkbox-icon {
+  height: 16px !important;
+  width: 16px !important;
+  margin-right: 10px!important;
+  border: 1px solid $tms-color-text !important;
 }
 //endregion
 

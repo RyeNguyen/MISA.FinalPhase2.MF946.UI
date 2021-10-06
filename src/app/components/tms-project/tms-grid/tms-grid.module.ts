@@ -14,6 +14,7 @@ import {TmsPopupModalModule} from "../../../shared/components/tms-popup-modal/tm
 import {TmsPopupModalTaskModule} from "../../tms-popup-modal-task/tms-popup-modal-task.module";
 import {TmsPopoverProgressModule} from "../../../shared/components/tms-popover-progress/tms-popover-progress.module";
 import {TmsPopoverDateModule} from "../../../shared/components/tms-popover-date/tms-popover-date.module";
+import { TmsPopoverUserModule } from './../../../shared/components/tms-popover-user/tms-popover-user.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {TmsPopoverDateModule} from "../../../shared/components/tms-popover-date/
     TmsPopupModalModule,
     TmsPopupModalTaskModule,
     TmsPopoverProgressModule,
-    TmsPopoverDateModule
+    TmsPopoverDateModule,
+    TmsPopoverUserModule
   ]
 })
 

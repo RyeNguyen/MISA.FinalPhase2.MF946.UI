@@ -81,9 +81,11 @@ export class TmsHeaderComponent implements OnInit {
     });
 
     //Lấy tên dự án hiện tại thông qua id vừa lấy
-    this._projectService.getById(this.currentProject).subscribe(data => {
-      this.headerTitle = data['ProjectName'];
-    });
+    if (this.currentProject) {
+      this._projectService.getById(this.currentProject).subscribe(data => {
+        this.headerTitle = data['ProjectName'];
+      });
+    }
 
     this.setDefaultActive();
   }

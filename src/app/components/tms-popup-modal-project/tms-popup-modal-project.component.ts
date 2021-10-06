@@ -10,6 +10,7 @@ import {TmsTextFieldComponent} from "../../shared/components/tms-text-field/tms-
 import {Department} from "../../shared/models/department";
 import {Project} from "../../shared/models/project";
 import {ProjectService} from "../../data-transfer/project.service";
+import { User } from 'src/app/shared/models/user';
 //endregion
 
 @Component({
@@ -27,6 +28,7 @@ export class TmsPopupModalProjectComponent implements OnInit {
   departmentOptions: Department[] = [];
 
   projectData: Project = new Project();
+  memberList: User[] = [];
 
   @Input() popupVisible: boolean = false;
   @Output() onPopupHidden: EventEmitter<any> = new EventEmitter<any>();
@@ -91,6 +93,11 @@ export class TmsPopupModalProjectComponent implements OnInit {
   bindData(data: any) {
     // @ts-ignore
     this.projectData[data.inputName] = data.inputValue;
+  }
+
+  renderMembersInfo(data: User[]): void {
+    this.innerVisible = false;
+    this.memberList = data;
   }
 
   /**

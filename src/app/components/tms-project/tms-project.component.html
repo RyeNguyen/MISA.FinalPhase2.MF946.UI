@@ -7,6 +7,7 @@
     <app-tms-grid
       *ngIf="router.url.includes('Type=' + projectPages['ProjectGrid'])"
       [gridData]="tasksData"
+      [userList]="userList"
       [taskColumns]="taskColumns"
       (onReloadData)="getTasks()"
     ></app-tms-grid>

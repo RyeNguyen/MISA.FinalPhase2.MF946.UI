@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../data-transfer/user.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../models/user";
 
 @Component({
@@ -8,14 +7,10 @@ import {User} from "../../models/user";
   styleUrls: ['./tms-user-list.component.scss']
 })
 export class TmsUserListComponent implements OnInit {
-  userList: User[] = [];
+  @Input() userList: User[] = [];
 
-  constructor(private _userService: UserService) {
+  constructor() {
   }
 
-  ngOnInit(): void {
-    this._userService.getUsers().subscribe(users => {
-      this.userList = users;
-    });
-  }
+  ngOnInit(): void {}
 }

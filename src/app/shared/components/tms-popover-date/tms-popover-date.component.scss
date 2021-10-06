@@ -9,3 +9,9 @@
     flex-direction: column;
   }
 }
+
+::ng-deep .tms-calendar__container {
+  .tms-modal__footer {
+    padding: 0 !important;
+  }
+}
